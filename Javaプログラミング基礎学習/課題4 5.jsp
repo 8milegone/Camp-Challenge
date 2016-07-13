@@ -52,11 +52,5 @@
     
     out.print(LINE_BREAK);
 %>
-
-
-
-
-
-      %>
     </body>
 </html>
