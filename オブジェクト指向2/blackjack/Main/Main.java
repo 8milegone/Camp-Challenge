@@ -61,12 +61,13 @@ public class Main {
     System.out.println("プレーヤーのターン");
     System.out.println("");
     
-    if (p.getSum() < 21){                                                       //プレーヤーの手持ちが21未満 getSumでpの最大値を取得
-        while(p.getSum() <= 21 && p.under21()){                                 //プレーヤーがhitし, かつ手持ちが21以下
+    if (p.getSum() < 21){                                                       //プレーヤーの手持ちが21未満
+        while(p.getSum() < 21 && p.under21()){                                  //プレーヤーの手持ちが21未満か21の時で、p.under21()の条件を満たす時
         play = d.hit(p.getMark());
         p.setCards(play);
         s.loading();
         }
+        
     } 
     //plyjudge = g.sumJudge(p.getSum(), p.getMark());                           
     plyjudge = p.checkSum();                                                    //プレーヤーの合計値確認
@@ -127,3 +128,43 @@ public class Main {
             }
     }
 }
+/*エラー内容 : Player側でHitを2枚以上引いて合計値が21になった際にゲームが終了せず、ディーラーからカードを延々
+  と受け取ってゲームが終了しない
+  問題なのは21以降の合計値が加算されず21としか表示されないということ*/
+/*原因 : Main.javaとPlayer.javaのコンボになるもの
+  Player.javaのSetCard→open
+   openが21未満の場合のみsumを再計算しているということ
+    しかし、Main.javaのプレイヤーループは21を許容
+        p.under21が前回のhitをdで読んで記憶しており
+        そのhitでどんどん処理。入力待ち(無い)状況*/
+/*<修正処理> : Main.java側
+if (p.getSum() < 21){                                                       
+        while(p.getSum() <= 21 && p.under21()){                                  
+        play = d.hit(p.getMark());
+        p.setCards(play);
+        s.loading();
+を        
+if (p.getSum() < 21){                                                       
+        while(p.getSum() < 21 && p.under21()){                                  
+        play = d.hit(p.getMark());
+        p.setCards(play);
+        s.loading();
+へ変更
+
+<補足> : Player.java側で
+ public void open() {                                                        
+        if (this.sum < 21){                                                    
+        this.sum = 0;
+        for (int i = 0; i < this.mycards.size(); i++){                          
+            if(this.mycards.get(i) == 1){                                       
+               ........
+を
+public void open() {                                                        
+        if (this.sum <= 21){                                                    
+        this.sum = 0;
+        for (int i = 0; i < this.mycards.size(); i++){                          
+            if(this.mycards.get(i) == 1){                                       
+               ........
+に上記に加えて行うと、1の手札の後の1or11の値にするかの質問と入力が
+2回呼び出されることを確認
+}*/

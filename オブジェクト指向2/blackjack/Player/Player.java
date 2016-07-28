@@ -63,7 +63,7 @@ public class Player extends Human{
     
     @Override
     public void open() {                                                        //Human.javaから上書きで保存する為にOverride
-        if (this.sum < 21){                                                     //値が21未満ならsumの値を0にリセット    
+        if (this.sum < 21){                                                    //値が21未満ならばsumの値を0にリセット    
         this.sum = 0;
         for (int i = 0; i < this.mycards.size(); i++){                          //mycardsの配列のサイズの中に値が1が含まれるなら
             if(this.mycards.get(i) == 1){                                       //値1を'1'としてか'11'として扱うかを問う
@@ -76,11 +76,19 @@ public class Player extends Human{
         } 
         }                                                                       //合計値21以下で1のカードを引いた時の処理終了
         System.out.println("カードの合計値は「" + sum + "」です。");
-        
+                                                                                /*エラー内容 : Player側でHitを2枚以上引いて合計値が21になった際にゲームが終了せず、ディーラーからカードを延々
+                                                                                    と受け取ってゲームが終了しない
+                                                                                    問題なのは21以降の合計値が加算されず21としか表示されないということ*/
+                                                                                /*原因 : Main.javaとPlayer.javaのコンボになるもの
+                                                                                            Player.javaのSetCard→open
+                                                                                                openが21未満の場合のみsumを再計算しているということ
+                                                                                        しかし、Main.javaのプレイヤーループは21を許容
+                                                                                             p.under21が前回のhitをdで読んで記憶しており
+                                                                                            そのhitでどんどん処理。入力待ち(無い)状況*/
     }
     
-    public boolean under21(){                                                   //合計値が21の時hitかstandかを選択するメソッドなのでbooleanを起用
-        if (this.sum < 21){                                                     
+    public boolean under21(){                                                   /*合計値が21未満時に*/
+        if (this.sum < 21){                                                    //hitかstandかを選択するメソッドなのでbooleanを起用                             
         System.out.println("手持ちのカードの合計は21未満です。");               
         System.out.println("カードを1枚引く場合は「hit」を入力して下さい。");
         System.out.println("引かない場合は「stand」を記入して下さい。");        //未記入の場合は自動的にstandになるようにboolean callで設定
