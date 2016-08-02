@@ -19,11 +19,8 @@
         自己紹介:<%= hs.getAttribute("comment")%><br>
         以上の内容で登録しました。<br>
     <br>
-    <form action="index.jsp" method="POST">
-        <br>
-        <input type="submit" name="btnSubmit" value="トップへ戻る">
-        <!--課題1;全てのページに対してトップへ戻る機能を追加する為追加-->       <!--"form action"を使用することから上記の表示内容とは区切って表現-->
-    </form>
+        <%=JumsHelper.getInstance().home()%>
+        <!--課題1 全部のページにトップへのリンクが表示-->
     </body>
     
 </html>

@@ -9,10 +9,9 @@
     <body>
         エラーが発生しました。以下の項目を確認してください。<br>
         <%=request.getAttribute("error")%>
-        <form action="index.jsp" method="POST">
         <br>
-        <input type="submit" name="btnSubmit" value="トップへ戻る">
-        <!--課題1;全てのページに対してトップへ戻る機能を追加する為追加-->       
-    </form>
+        <%=JumsHelper.getInstance().home()%>
+        <!--課題1 全部のページにトップへのリンクが表示-->
+   
     </body>
 </html>
