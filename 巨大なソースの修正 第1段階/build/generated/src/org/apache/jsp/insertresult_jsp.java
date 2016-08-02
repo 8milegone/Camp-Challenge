@@ -6,7 +6,7 @@ import javax.servlet.jsp.*;
 import jums.JumsHelper;
 import javax.servlet.http.HttpSession;
 
-public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -54,15 +54,10 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JUMS登録確認画面</title>\n");
+      out.write("        <title>JUMS登録結果画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("    ");
- if(!hs.getAttribute("name").equals("")){ 
-      out.write("\n");
-      out.write("    <!--名前が未記入でなければif以降を実施-->\n");
-      out.write("    <!--実際は名前だけ入力していてもelse以降が実施される-->\n");
-      out.write("        <h1>登録確認</h1>\n");
+      out.write("        <h1>登録結果</h1><br>\n");
       out.write("        名前:");
       out.print( hs.getAttribute("name"));
       out.write("<br>\n");
@@ -78,26 +73,15 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        自己紹介:");
       out.print( hs.getAttribute("comment"));
       out.write("<br>\n");
-      out.write("        上記の内容で登録します。よろしいですか？\n");
-      out.write("        <form action=\"insertresult\" method=\"POST\">\n");
-      out.write("            <input type=\"submit\" name=\"yes\" value=\"はい\">\n");
-      out.write("        </form>\n");
-      out.write("    ");
- }else{ 
-      out.write("\n");
-      out.write("        <h1>入力が不完全です</h1>\n");
-      out.write("    ");
- } 
-      out.write("\n");
-      out.write("        <form action=\"insert\" method=\"POST\">\n");
-      out.write("            <input type=\"submit\" name=\"no\" value=\"登録画面に戻る\">\n");
-      out.write("        </form>\n");
-      out.write("        <br>\n");
+      out.write("        以上の内容で登録しました。<br>\n");
+      out.write("    <br>\n");
       out.write("        ");
       out.print(JumsHelper.getInstance().home());
       out.write("\n");
       out.write("        <!--課題1 全部のページにトップへのリンクが表示-->\n");
+      out.write("        <!--insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい-->\n");
       out.write("    </body>\n");
+      out.write("    \n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

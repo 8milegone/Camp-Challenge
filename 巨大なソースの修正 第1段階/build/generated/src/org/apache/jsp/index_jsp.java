@@ -57,10 +57,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <a href=\"insert\">新規登録</a><br>\n");
       out.write("    <a href=\"\" >検索(修正・削除)</a><br>\n");
       out.write("    <br>\n");
-      out.write("    ");
+      out.write("        ");
       out.print(JumsHelper.getInstance().home());
-      out.write("                                    \n");
-      out.write("    <!--課題1;全てのページに対してトップへ戻る機能を追加する為追加-->\n");
+      out.write("\n");
+      out.write("    <!--課題1 全部のページにトップへのリンクが表示-->\n");
       out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

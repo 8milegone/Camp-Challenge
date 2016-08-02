@@ -28,7 +28,13 @@ public class InsertConfirm extends HttpServlet {
             throws ServletException, IOException {
         try{
             HttpSession session = request.getSession();
-            request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
+            request.setCharacterEncoding("UTF-8");
+            session.setAttribute("bc", (int) (Math.random() * 1000));           /*課題2 直リンク防止の処理 inserresultへの直リンクを防ぐ為にsetAttributeで"bc"(int)を設置
+                                                                                insert.jspからInsertResult.javaへアクセスした段階でランダム変数の"bc"を与えることにより
+                                                                                その後のinsertresultへの直リンク防止の処理につながる*/
+            
+            /*セッションに格納する文字コードをUTF-8に変更直リンクを防ぐ為
+            "accesschk"を作成しnullまたは"ac"から情報を得られなければ"不正なアクセス"と表記する*/
             String accesschk = request.getParameter("ac");
             if(accesschk ==null || (Integer)session.getAttribute("ac")!=Integer.parseInt(accesschk)){
                 throw new Exception("不正なアクセスです");

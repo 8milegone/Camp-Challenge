@@ -56,7 +56,8 @@
         <textarea name="comment" rows=10 cols=50 style="resize:none" wrap="hard"></textarea><br><br>
         <!--コメント入力ボックス-->
         
-        <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">
+        <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">    <!--Insert.javaから与えられた"ac"の情報をhs.getAttribute("ac")から
+                                                                                隠れデータとして反映させる-->
         <input type="submit" name="btnSubmit" value="確認画面へ">
     </form>
         <br>

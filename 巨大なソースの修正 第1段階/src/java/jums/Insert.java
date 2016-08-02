@@ -25,8 +25,10 @@ public class Insert extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.setAttribute("ac", (int) (Math.random() * 1000));
-        request.getRequestDispatcher("/insert.jsp").forward(request, response);   
+        session.setAttribute("ac", (int) (Math.random() * 1000));               /*insertconfirmへの直リンクを防ぐ為にsetAttributeで"ac"(int)を設置
+                                                                                index.jspからInsert.javaへアクセスした段階でランダム変数の"ac"を与えることにより
+                                                                                その後のinsertconfirmへの直リンク防止の処理にもつながる*/
+        request.getRequestDispatcher("/insert.jsp").forward(request, response); /*insert.jspへメソッドを飛ばす*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

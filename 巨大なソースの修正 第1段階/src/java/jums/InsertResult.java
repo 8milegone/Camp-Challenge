@@ -33,7 +33,14 @@ public class InsertResult extends HttpServlet {
         HttpSession session = request.getSession();
         
         try{
-            //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
+            /*課題2 直リンク防止の処理 セッションに格納する文字コードをUTF-8に変更直リンクを防ぐ為
+            "accesschk"を作成しnullまたは"ac"から情報を得られなければ"不正なアクセス"と表記する*/
+            String accesschk = request.getParameter("bc");
+            if(accesschk ==null || (Integer)session.getAttribute("bc")!=Integer.parseInt(accesschk)){
+                throw new Exception("不正なアクセスです");
+            }
+
+             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく
             UserDataDTO userdata = new UserDataDTO();
             userdata.setName((String)session.getAttribute("name"));
             Calendar birthday = Calendar.getInstance();

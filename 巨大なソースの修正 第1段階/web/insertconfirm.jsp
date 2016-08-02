@@ -22,6 +22,9 @@
         自己紹介:<%= hs.getAttribute("comment")%><br>
         上記の内容で登録します。よろしいですか？
         <form action="insertresult" method="POST">
+            <input type="hidden" name="bc"  value="<%= hs.getAttribute("bc")%>">    
+            <!--課題2 直リンク防止の処理 InsertConfirm.javaから与えられた"bc"の情報をhs.getAttribute("bc")から
+            隠れデータとして反映させる-->
             <input type="submit" name="yes" value="はい">
         </form>
     <% }else{ %>

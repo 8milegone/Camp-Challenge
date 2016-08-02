@@ -21,6 +21,7 @@
     <br>
         <%=JumsHelper.getInstance().home()%>
         <!--課題1 全部のページにトップへのリンクが表示-->
+        <!--insertresultにて直リンク防止用の処理が存在しない。insertからinsertconfirmへの流れを参考に修正しなさい-->
     </body>
     
 </html>
