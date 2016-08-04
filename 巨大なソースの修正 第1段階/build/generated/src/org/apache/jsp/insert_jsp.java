@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import jums.UserDataBeans;
 import javax.servlet.http.HttpSession;
 import jums.JumsHelper;
 
@@ -43,10 +44,16 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
-      out.write('\n');
+      out.write("   <!--インスタンスのクラスをインポート-->\n");
+      out.write("\n");
+      out.write("\n");
 
-    HttpSession hs = request.getSession();
+    //HttpSessionインスタンスの取得                                             //課題3 Servletからインスタンスデータを取得
+    HttpSession hs = request.getSession();                                      //udbをjspで使用する為に、ここにてインスタンス化
+    UserDataBeans udb = new UserDataBeans();
+    if(hs.getAttribute("udb") !=null){                                          //「取得したデータがnullでなければ」という条件で分岐させる
+        udb = (UserDataBeans)hs.getAttribute("udb");                            //UserDataBeansの取得したデータを参照させる為に"getAttribute"で表記
+    }
 
       out.write("\n");
       out.write("\n");
@@ -59,7 +66,20 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("    <form action=\"insertconfirm\" method=\"POST\">\n");
       out.write("        名前:\n");
-      out.write("        <input type=\"text\" name=\"name\" value=\"\">\n");
+      out.write("        ");
+if(udb.getName().equals("")){
+      out.write("                                       ");
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"name\" value=\"\">\n");
+      out.write("            ");
+}else{
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"name\" value=\"");
+      out.print(udb.getName());
+      out.write("\">          \n");
+      out.write("        ");
+}
+      out.write("\n");
       out.write("        <br><br>\n");
       out.write("\n");
       out.write("        生年月日:　\n");
@@ -130,17 +150,15 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        \n");
       out.write("        <input type=\"hidden\" name=\"ac\"  value=\"");
       out.print( hs.getAttribute("ac"));
-      out.write("\">\n");
+      out.write("\">    <!--Insert.javaから与えられた\"ac\"の情報をhs.getAttribute(\"ac\")から\n");
+      out.write("                                                                                隠れデータとして反映させる-->\n");
       out.write("        <input type=\"submit\" name=\"btnSubmit\" value=\"確認画面へ\">\n");
       out.write("    </form>\n");
       out.write("        <br>\n");
       out.write("        ");
       out.print(JumsHelper.getInstance().home());
       out.write("\n");
-      out.write("    <form action=\"index.jsp\" method=\"POST\">\n");
-      out.write("        <br>\n");
-      out.write("        <input type=\"submit\" name=\"btnSubmit\" value=\"トップへ戻る\">\n");
-      out.write("    </form>\n");
+      out.write("        <!--課題1 全部のページにトップへのリンクが表示-->\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

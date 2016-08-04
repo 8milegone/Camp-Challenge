@@ -1,7 +1,13 @@
+<%@page import="jums.UserDataBeans"%>   <!--インスタンスのクラスをインポート-->
 <%@page import="javax.servlet.http.HttpSession" %>
 <%@page import="jums.JumsHelper" %>
 <%
-    HttpSession hs = request.getSession();
+    //HttpSessionインスタンスの取得                                             //課題3 Servletからインスタンスデータを取得
+    HttpSession hs = request.getSession();                                      //udbをjspで使用する為に、ここにてインスタンス化
+    UserDataBeans udb = new UserDataBeans();
+    if(hs.getAttribute("udb") !=null){                                          //「取得したデータがnullでなければ」という条件で分岐させる
+        udb = (UserDataBeans)hs.getAttribute("udb");                            //UserDataBeansの取得したデータを参照させる為に"getAttribute"で表記
+    }
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +19,11 @@
     <body>
     <form action="insertconfirm" method="POST">
         名前:
-        <input type="text" name="name" value="">
+        <%if(udb.getName().equals("")){%>                                       <%--課題3 UserDataBeansで格納されているデータが""ならデータを挿入--%>
+            <input type="text" name="name" value="">
+            <%}else{%>
+            <input type="text" name="name" value="<%=udb.getName()%>">          <%--課題3 名前が既に格納されていたらその値を表示--%>
+        <%}%>
         <br><br>
 
         生年月日:　

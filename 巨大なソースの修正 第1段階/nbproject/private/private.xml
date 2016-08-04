@@ -3,16 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/UserDataDAO.java</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/web/index.jsp</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/InsertResult.java</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/InsertConfirm.java</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/Insert.java</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/web/insert.jsp</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/UserDataDTO.java</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/web/insertconfirm.jsp</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/web/insertresult.jsp</file>
-            <file>file:/Z:/hayashi-s/97_workspace/JavaUserManagementSystem/src/java/jums/JumsHelper.java</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/web/insertconfirm.jsp</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/src/java/jums/UserDataBeans.java</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/web/insertresult.jsp</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/src/java/jums/Insert.java</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/src/java/jums/InsertConfirm.java</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/web/insert.jsp</file>
+            <file>file:/C:/Users/8mile_000/C/soeda_origin/開発/開発-%20JAVA/巨大なソース修正第1段階/JavaUserManagementSystem_ver1.0/src/java/jums/InsertResult.java</file>
         </group>
     </open-files>
 </project-private>

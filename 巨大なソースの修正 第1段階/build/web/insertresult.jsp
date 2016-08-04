@@ -1,7 +1,10 @@
+<%@page import="jums.UserDataBeans"%>
 <%@page import="jums.JumsHelper"%>
 <%@page import="javax.servlet.http.HttpSession" %>
 <%
-    HttpSession hs = request.getSession();
+    HttpSession hs = request.getSession();                                      //課題3 Servletからインスタンスデータを取得
+    UserDataBeans udb = (UserDataBeans)hs.getAttribute("udb");                  //UserDataBeansの取得したデータを参照させる為に"getAttribute"で表記
+                                                                                //前ページのinsert.jspにてnullの条件を提示しているので、ここでは省略
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,11 +15,11 @@
     </head>
     <body>
         <h1>登録結果</h1><br>
-        名前:<%= hs.getAttribute("name")%><br>
-        生年月日:<%= hs.getAttribute("year")+"年"+hs.getAttribute("month")+"月"+hs.getAttribute("day")+"日"%><br>
-        種別:<%= hs.getAttribute("type")%><br>
-        電話番号:<%= hs.getAttribute("tell")%><br>
-        自己紹介:<%= hs.getAttribute("comment")%><br>
+        名前:<%= udb.getName()%><br>                                            <%--課題3 UserDataBeansで取得したデータを表示--%>
+        生年月日:<%= udb.getYear()+"年"+udb.getMonth()+"月"+udb.getDay()+"日"%><br>
+        種別:<%= udb.getType()%><br>
+        電話番号:<%= udb.getTell()%><br>
+        自己紹介:<%= udb.getComment()%><br>
         以上の内容で登録しました。<br>
     <br>
         <%=JumsHelper.getInstance().home()%>

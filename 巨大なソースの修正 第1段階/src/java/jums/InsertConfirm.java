@@ -59,6 +59,18 @@ public class InsertConfirm extends HttpServlet {
             session.setAttribute("comment", comment);
             System.out.println("Session updated!!");
             
+            //UserDataBeansのインスタンスを生成                                 //課題3 フォームから取得できた値をUserDataBeansへ
+            UserDataBeans udb = new UserDataBeans();                            //格納していく
+            udb.setName(name);
+            udb.setYear(year);
+            udb.setMonth(month);
+            udb.setDay(day);
+            udb.setType(type);
+            udb.setTell(tell);
+            udb.setComment(comment);
+            
+           session.setAttribute("udb",udb);                                     //課題3 HttpSessionにudbオブジェクトを"udb"として参照していく 
+            
             request.getRequestDispatcher("/insertconfirm.jsp").forward(request, response);
         }catch(Exception e){
             request.setAttribute("error", e.getMessage());

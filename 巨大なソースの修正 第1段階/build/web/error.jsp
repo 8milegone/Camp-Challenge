@@ -7,7 +7,7 @@
         <title>error</title>
     </head>
     <body>
-        エラーが発生しました。以下の項目を確認してください。<br>
+        エラーが発生しました。以下の項目を確認してください。<br>ん
         <%=request.getAttribute("error")%>
         <br>
         <%=JumsHelper.getInstance().home()%>

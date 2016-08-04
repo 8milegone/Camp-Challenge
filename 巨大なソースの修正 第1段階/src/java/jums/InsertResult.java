@@ -31,10 +31,12 @@ public class InsertResult extends HttpServlet {
         
         //セッションスタート
         HttpSession session = request.getSession();
+        UserDataBeans udb = (UserDataBeans)session.getAttribute("udb");
+        /*課題3 セッションにudbのデータも参照する*/
         
         try{
             /*課題2 直リンク防止の処理 セッションに格納する文字コードをUTF-8に変更直リンクを防ぐ為
-            "accesschk"を作成しnullまたは"ac"から情報を得られなければ"不正なアクセス"と表記する*/
+            "accesschk"を作成しnullまたは"bc"から情報を得られなければ"不正なアクセス"と表記する*/
             String accesschk = request.getParameter("bc");
             if(accesschk ==null || (Integer)session.getAttribute("bc")!=Integer.parseInt(accesschk)){
                 throw new Exception("不正なアクセスです");
