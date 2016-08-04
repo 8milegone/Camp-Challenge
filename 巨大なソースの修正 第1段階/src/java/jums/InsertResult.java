@@ -63,7 +63,11 @@ public class InsertResult extends HttpServlet {
             //DBへデータの挿入
             UserDataDAO .getInstance().insert(userdata);
             
-            request.getRequestDispatcher("/insertresult.jsp").forward(request, response);
+            request.getRequestDispatcher("/insertresult.jsp").forward(request, response);   //ここまではセッションの情報は必要
+            //課題7 セッションのクリア 
+            //MVCからこの段階でクリアにして後はinsertresult.jspへ出力も行ったのでこの箇所を指定。
+            //今回破棄するセッションは①直リンク防止用の"ac"と②データ自体を格納していた"udb"の2つ
+            session.invalidate();
         }catch(Exception e){
             //データ挿入に失敗したらエラーページにエラー文を渡して表示
             request.setAttribute("error", e.getMessage());
