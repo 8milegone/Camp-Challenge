@@ -19,10 +19,10 @@
     <body>
     <form action="insertconfirm" method="POST">
         名前:
-        <%if(udb.getName().equals("")){%>                                       <%--課題3 UserDataBeansで格納されているデータが""ならデータを挿入--%>
+        <%if(udb.getName().equals("")){%>                                       <%--課題3 UserDataBeansで格納されているデータが""ならデータを挿入(分岐)--%>
             <input type="text" name="name" value="">
             <%}else{%>
-            <input type="text" name="name" value="<%=udb.getName()%>">          <%--課題3 名前が既に格納されていたらその値を表示--%>
+            <input type="text" name="name" value="<%=udb.getName()%>">          <%--課題3 名前が既に格納されていたらその値を表示(今回は名前のみ)--%>
         <%}%>
         <br><br>
 
@@ -31,7 +31,7 @@
             <option value="">----</option>
             <%
             for(int i=1950; i<=2010; i++){ %>
-            <option value="<%=i%>"> <%=i%> </option>
+            <option value="<%=i%>"><%=i%> </option>
             <% } %>
         </select>年
         <select name="month">
@@ -52,7 +52,7 @@
 
         種別:
         <br>
-        <input type="radio" name="type" value="1"　checked>エンジニア<br>
+        <input type="radio" name="type" value="1">エンジニア<br>
         <input type="radio" name="type" value="2">営業<br>
         <input type="radio" name="type" value="3">その他<br>
         <br>

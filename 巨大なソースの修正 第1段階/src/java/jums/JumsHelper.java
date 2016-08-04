@@ -18,3 +18,5 @@ public class JumsHelper {
         return "<a href=\""+homeURL+"\">トップへ戻る</a>";
     }
 }
+
+    

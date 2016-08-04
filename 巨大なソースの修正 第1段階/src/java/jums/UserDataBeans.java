@@ -18,16 +18,23 @@ import java.util.Date;
  * 
  */
 public class UserDataBeans {                                                   /*受け取るデータはInsertConfirm.javaから*/
-    private String name = "";                                                   /*①name*/
-    private String year ;                                                       /*②year*/
-    private String month ;                                                      /*③month*/
-    private String day ;                                                        /*④day*/
-    private String type ;                                                       /*⑤type*/
-    private String tell ;                                                       /*⑥tell*/
+    private String name;                                                        /*①name*/
+    private String year;                                                        /*②year*/
+    private String month;                                                       /*③month*/
+    private String day;                                                         /*④day*/
+    private int type;                                                           /*⑤type　課題4 String型からint型へ修正*/
+    private String tell;                                                        /*⑥tell*/
     private String comment;                                                     /*⑦comment
                                                                                     の計7つなのでクラスを宣言*/
     
     public UserDataBeans(){
+        this.name = "";
+        this.year = "";
+        this.month = "";
+        this.day = "";
+        this.type = 0;                                                          /*課題4 String型からint型へ修正の為に0を初期値にしています。*/
+        this.tell = "";
+        this.comment = "";
     } 
     
  //入力されたデータ自体を格納させる為に、①～⑦までの値を取得できるようにする 
@@ -61,11 +68,11 @@ public class UserDataBeans {                                                   /
         return day;
     }
     
-    public void setType(String type){
-        this.type = type;
+    public void setType(int type){                                              //課題4 String型からint型へ修正
+        this.type = type;                                                       //insertconfirm.jspにてnullの値をint=0で受け取りができるようにしています。
     }
 
-    public String getType(){
+    public int getType(){
         return type;
     }
     

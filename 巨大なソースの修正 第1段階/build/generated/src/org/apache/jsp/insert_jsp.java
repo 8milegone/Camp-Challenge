@@ -76,7 +76,8 @@ if(udb.getName().equals("")){
       out.write("\n");
       out.write("            <input type=\"text\" name=\"name\" value=\"");
       out.print(udb.getName());
-      out.write("\">          \n");
+      out.write("\">          ");
+      out.write("\n");
       out.write("        ");
 }
       out.write("\n");
@@ -134,7 +135,7 @@ if(udb.getName().equals("")){
       out.write("\n");
       out.write("        種別:\n");
       out.write("        <br>\n");
-      out.write("        <input type=\"radio\" name=\"type\" value=\"1\"　checked>エンジニア<br>\n");
+      out.write("        <input type=\"radio\" name=\"type\" value=\"1\">エンジニア<br>\n");
       out.write("        <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
       out.write("        <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
       out.write("        <br>\n");

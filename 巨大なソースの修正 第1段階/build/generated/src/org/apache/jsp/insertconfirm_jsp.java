@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import jums.UserDataBeans;
 import jums.JumsHelper;
 import javax.servlet.http.HttpSession;
 
@@ -43,10 +44,13 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
-      out.write('\n');
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
 
-    HttpSession hs = request.getSession();
+    HttpSession hs = request.getSession();                                      //課題3 Servletからインスタンスデータを取得
+    UserDataBeans udb = (UserDataBeans)hs.getAttribute("udb");                  //UserDataBeansの取得したデータを参照させる為に"getAttribute"で表記
+                                                                                //前ページのinsert.jspにてnullの条件を提示しているので、ここでは省略
 
       out.write("\n");
       out.write("\n");
@@ -57,37 +61,74 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        <title>JUMS登録確認画面</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("    ");
- if(!hs.getAttribute("name").equals("")){ 
+      out.write("        ");
+ if(!udb.getName().equals("")                               //課題4 フォームの内容が未入力であっても通過してしまうのを修正
+              && !udb.getYear().equals("")                            //ifの条件に各フォームの情報も&&で表記する。
+              && !udb.getMonth().equals("")                           //全てのフォームの値が""ではなければ登録確認画面を表記する。
+              && !udb.getDay().equals("")
+              && !udb.getType().equals("1")
+              && !udb.getTell().equals("")
+              && !udb.getComment().equals("")
+             ){ 
       out.write("\n");
       out.write("    <!--名前が未記入でなければif以降を実施-->\n");
       out.write("    <!--実際は名前だけ入力していてもelse以降が実施される-->\n");
       out.write("        <h1>登録確認</h1>\n");
       out.write("        名前:");
-      out.print( hs.getAttribute("name"));
-      out.write("<br>\n");
+      out.print( udb.getName());
+      out.write("<br>                                            ");
+      out.write("\n");
       out.write("        生年月日:");
-      out.print( hs.getAttribute("year")+"年"+hs.getAttribute("month")+"月"+hs.getAttribute("day")+"日");
+      out.print( udb.getYear()+"年"+udb.getMonth()+"月"+udb.getDay()+"日");
       out.write("<br>\n");
       out.write("        種別:");
-      out.print( hs.getAttribute("type"));
+      out.print( udb.getType());
       out.write("<br>\n");
       out.write("        電話番号:");
-      out.print( hs.getAttribute("tell"));
+      out.print( udb.getTell());
       out.write("<br>\n");
       out.write("        自己紹介:");
-      out.print( hs.getAttribute("comment"));
+      out.print( udb.getComment());
       out.write("<br>\n");
       out.write("        上記の内容で登録します。よろしいですか？\n");
       out.write("        <form action=\"insertresult\" method=\"POST\">\n");
+      out.write("            \n");
+      out.write("            <input type=\"hidden\" name=\"bc\"  value=\"");
+      out.print( hs.getAttribute("bc"));
+      out.write("\">    \n");
+      out.write("            <!--課題2 直リンク防止の処理 InsertConfirm.javaから与えられた\"bc\"の情報をhs.getAttribute(\"bc\")から\n");
+      out.write("            隠れデータとして反映させる-->\n");
+      out.write("            \n");
       out.write("            <input type=\"submit\" name=\"yes\" value=\"はい\">\n");
       out.write("        </form>\n");
       out.write("    ");
  }else{ 
       out.write("\n");
       out.write("        <h1>入力が不完全です</h1>\n");
-      out.write("    ");
- } 
+      out.write("        <h3>以下の未入力箇所を確認し訂正して下さい。</h3>\n");
+      out.write("        ");
+ 
+           if(udb.getName().equals("")){
+           out.println("名前が未入力です。<br>"); 
+            }                                                                 //課題4 フォームの内容が未入力であっても通過してしまうのを修正
+           if(udb.getYear().equals("")&&                             //ifの条件に各フォームの情報も&&で表記する。
+                udb.getMonth().equals("")&&                          //全てのフォームの値が""ではなければ登録確認画面を表記する。
+                udb.getDay().equals("")){
+                    out.println("生年月日が未入力です。<br>");   
+                 }
+           if(udb.getType().equals("")){
+            out.println("種別が未選択です。<br>");
+            }
+           if(udb.getTell().equals("")){
+            out.println("電話番号が未入力です。<br>");
+            }
+           if(udb.getComment().equals("")){
+            out.println("自己紹介文が未入力です。<br>");
+            }
+        
+      out.write("\n");
+      out.write("        ");
+} 
       out.write("\n");
       out.write("        <form action=\"insert\" method=\"POST\">\n");
       out.write("            <input type=\"submit\" name=\"no\" value=\"登録画面に戻る\">\n");
