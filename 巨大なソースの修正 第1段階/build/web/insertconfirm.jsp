@@ -22,8 +22,7 @@
               && !udb.getTell().equals("")
               && !udb.getComment().equals("")
              ){ %>
-    <!--名前が未記入でなければif以降を実施-->
-    <!--実際は名前だけ入力していてもelse以降が実施される-->
+    
         <h1>登録確認</h1>
         名前:<%= udb.getName()%><br>                                            <%--課題3 UserDataBeansで取得したデータを表示--%>
         生年月日:<%= udb.getYear()+"年"+udb.getMonth()+"月"+udb.getDay()+"日"%><br>

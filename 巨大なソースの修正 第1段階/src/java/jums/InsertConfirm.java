@@ -46,6 +46,7 @@ public class InsertConfirm extends HttpServlet {
             String month = request.getParameter("month");
             String day = request.getParameter("day");
             
+            
             int type = 0;                                                       //課題4 typeをStringのままで取得すると、どうしてもnullで取得されてしまい
             if (request.getParameter("type") == null){                          //課題4のtypeに対する項目でエラーになるのでnullからtype=0へ変換されるように
                 type = 0;                                                       //しています。

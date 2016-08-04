@@ -53,6 +53,7 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
     UserDataBeans udb = new UserDataBeans();
     if(hs.getAttribute("udb") !=null){                                          //「取得したデータがnullでなければ」という条件で分岐させる
         udb = (UserDataBeans)hs.getAttribute("udb");                            //UserDataBeansの取得したデータを参照させる為に"getAttribute"で表記
+    
     }
 
       out.write("\n");
@@ -84,42 +85,68 @@ if(udb.getName().equals("")){
       out.write("        <br><br>\n");
       out.write("\n");
       out.write("        生年月日:　\n");
-      out.write("        <select name=\"year\">\n");
+      out.write("        <select name=\"year\">                                                    ");
+      out.write("\n");
       out.write("            <option value=\"\">----</option>\n");
       out.write("            ");
-
-            for(int i=1950; i<=2010; i++){ 
+if(udb.getYear().equals("")){
+                for(int i=1950; i<=2010; i++){ 
+      out.write("\n");
+      out.write("            <option value= \"");
+      out.print(i);
+      out.write("\" >  ");
+      out.print(i);
+      out.write("  </option>\n");
+      out.write("            ");
+ }
+      out.write("\n");
+      out.write("            ");
+}else{ 
+      out.write("\n");
+      out.write("            <option value=\"");
+      out.print(udb.getYear());
+      out.write('"');
+      out.write('>');
+      out.print(udb.getYear());
+      out.write(" </option>\n");
+      out.write("            ");
+ } 
+      out.write("                                                             \n");
+      out.write("        </select>年\n");
+      out.write("        \n");
+      out.write("        <select name=\"month\">\n");
+      out.write("            <option value=\"\">--</option>\n");
+      out.write("            ");
+if(udb.getMonth().equals("")){
+                for(int i = 1; i<=12; i++){ 
       out.write("\n");
       out.write("            <option value=\"");
       out.print(i);
-      out.write("\"> ");
+      out.write("\" > ");
       out.print(i);
       out.write(" </option>\n");
       out.write("            ");
  } 
       out.write("\n");
-      out.write("        </select>年\n");
-      out.write("        <select name=\"month\">\n");
-      out.write("            <option value=\"\">--</option>\n");
       out.write("            ");
-
-            for(int i = 1; i<=12; i++){ 
+}else{
       out.write("\n");
       out.write("            <option value=\"");
-      out.print(i);
+      out.print(udb.getMonth());
       out.write('"');
       out.write('>');
-      out.print(i);
+      out.print(udb.getMonth());
       out.write("</option>\n");
       out.write("            ");
  } 
       out.write("\n");
+      out.write("            \n");
       out.write("        </select>月\n");
       out.write("        <select name=\"day\">\n");
       out.write("            <option value=\"\">--</option>\n");
       out.write("            ");
-
-            for(int i = 1; i<=31; i++){ 
+if(udb.getDay().equals("")){
+                for(int i = 1; i<=31; i++){ 
       out.write("\n");
       out.write("            <option value=\"");
       out.print(i);
@@ -130,24 +157,90 @@ if(udb.getName().equals("")){
       out.write("            ");
  } 
       out.write("\n");
+      out.write("            ");
+} else{
+      out.write("\n");
+      out.write("            <option value=\"");
+      out.print(udb.getDay());
+      out.write('"');
+      out.write('>');
+      out.print(udb.getDay());
+      out.write("</option>\n");
+      out.write("            ");
+ } 
+      out.write("\n");
+      out.write("            \n");
       out.write("        </select>日\n");
       out.write("        <br><br>\n");
       out.write("\n");
       out.write("        種別:\n");
       out.write("        <br>\n");
-      out.write("        <input type=\"radio\" name=\"type\" value=\"1\">エンジニア<br>\n");
-      out.write("        <input type=\"radio\" name=\"type\" value=\"2\">営業<br>\n");
-      out.write("        <input type=\"radio\" name=\"type\" value=\"3\">その他<br>\n");
+      out.write("        <input type=\"radio\" name=\"type\" value=\"1\"\n");
+      out.write("        ");
+ if(udb.getType()!=0){
+            if(udb.getType()==1){
+                out.println("checked");
+            }
+           }
+         
+      out.write(">    エンジニア<br>\n");
+      out.write("        \n");
+      out.write("        <input type=\"radio\" name=\"type\" value=\"2\"\n");
+      out.write("        ");
+ if(udb.getType()!=0){
+            if(udb.getType()==2){
+                out.println("checked");
+            }
+           }
+         
+      out.write(">    営業<br>\n");
+      out.write("         \n");
+      out.write("        <input type=\"radio\" name=\"type\" value=\"3\"\n");
+      out.write("        ");
+ if(udb.getType()!=0){
+            if(udb.getType()==3){
+                out.println("checked");
+            }
+           }
+        
+      out.write(">     その他<br>\n");
       out.write("        <br>\n");
       out.write("\n");
       out.write("        電話番号:\n");
-      out.write("        <input type=\"text\" name=\"tell\" value=\"\">\n");
+      out.write("        ");
+if(udb.getTell().equals("")){
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"tell\" value=\"\">\n");
+      out.write("            ");
+}else{
+      out.write("\n");
+      out.write("            <input type=\"text\" name=\"tell\" value=\"");
+      out.print(udb.getTell());
+      out.write("\">\n");
+      out.write("        ");
+}
+      out.write("\n");
+      out.write("        \n");
+      out.write("        \n");
       out.write("        <br><br>\n");
       out.write("\n");
       out.write("        自己紹介文\n");
       out.write("        <br>\n");
-      out.write("        <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\"></textarea><br><br>\n");
-      out.write("        <!--コメント入力ボックス-->\n");
+      out.write("        ");
+ if(udb.getComment().equals("")){
+      out.write("\n");
+      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\"><!--コメント入力ボックス--></textarea><br><br>\n");
+      out.write("            ");
+}else{
+      out.write("\n");
+      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\">");
+      out.print(udb.getComment());
+      out.write("</textarea>\n");
+      out.write("        ");
+}
+      out.write("                                                                   ");
+      out.write("\n");
+      out.write("                \n");
       out.write("        \n");
       out.write("        <input type=\"hidden\" name=\"ac\"  value=\"");
       out.print( hs.getAttribute("ac"));
