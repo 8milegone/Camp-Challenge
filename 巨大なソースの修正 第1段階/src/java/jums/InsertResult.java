@@ -3,6 +3,7 @@ package jums;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,11 +44,18 @@ public class InsertResult extends HttpServlet {
             }
 
             //ユーザー情報に対応したJavaBeansオブジェクトに格納していく(課題3 で作成したUserDataBeans udbの各値をDTOへ格納)
-            UserDataDTO userdata = new UserDataDTO();
+            UserDataDTO userdata = new UserDataDTO();                           //課題6 現在時間でDBに格納されているので修正
             userdata.setName(udb.getName());
-            Calendar birthday = Calendar.getInstance();
-            userdata.setBirthday(birthday.getTime());
             
+            
+            Calendar birthday = Calendar.getInstance();                         //Calendar型のインスタンス取得
+            int year = Integer.parseInt(udb.getYear());
+            int  month= Integer.parseInt(udb.getMonth());
+            int day = Integer.parseInt(udb.getDay());
+            month= month-1;                                                     //正しい生まれ月を記録するため、フォームに入力された値から１を引いてからJavaBeansオブジェクトに格納
+            birthday.set(year, month, day);                                 
+            
+            userdata.setBirthday(birthday.getTime());                           //int型からDate型へ値変換したのを格納
             userdata.setType(udb.getType());
             userdata.setTell(udb.getTell());
             userdata.setComment(udb.getComment());

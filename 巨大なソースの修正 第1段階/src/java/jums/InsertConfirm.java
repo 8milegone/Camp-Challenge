@@ -81,7 +81,7 @@ public class InsertConfirm extends HttpServlet {
             System.out.println("name;"+udb.getName());
             System.out.println("udb;"+udb.getType());
             
-           session.setAttribute("udb",udb);                                     //課題3 HttpSessionにudbオブジェクトを"udb"として参照していく 
+            session.setAttribute("udb",udb);                                     //課題3 HttpSessionにudbオブジェクトを"udb"として参照していく 
             
             request.getRequestDispatcher("/insertconfirm.jsp").forward(request, response);
         }catch(Exception e){

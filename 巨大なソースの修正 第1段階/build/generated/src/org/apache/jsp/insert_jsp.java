@@ -229,7 +229,7 @@ if(udb.getTell().equals("")){
       out.write("        ");
  if(udb.getComment().equals("")){
       out.write("\n");
-      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\"><!--コメント入力ボックス--></textarea><br><br>\n");
+      out.write("            <textarea name=\"comment\" rows=10 cols=50 style=\"resize:none\" wrap=\"hard\"></textarea><br><br>\n");
       out.write("            ");
 }else{
       out.write("\n");
@@ -244,8 +244,8 @@ if(udb.getTell().equals("")){
       out.write("        \n");
       out.write("        <input type=\"hidden\" name=\"ac\"  value=\"");
       out.print( hs.getAttribute("ac"));
-      out.write("\">    <!--Insert.javaから与えられた\"ac\"の情報をhs.getAttribute(\"ac\")から\n");
-      out.write("                                                                                隠れデータとして反映させる-->\n");
+      out.write("\">    <!--Insert.javaから与えられた\"ac\"の情報をhs.getAttribute(\"ac\")から隠れデータとして反映させる-->\n");
+      out.write("        <br>\n");
       out.write("        <input type=\"submit\" name=\"btnSubmit\" value=\"確認画面へ\">\n");
       out.write("    </form>\n");
       out.write("        <br>\n");

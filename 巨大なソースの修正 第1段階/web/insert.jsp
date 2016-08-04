@@ -103,14 +103,14 @@
         自己紹介文
         <br>
         <% if(udb.getComment().equals("")){%>
-            <textarea name="comment" rows=10 cols=50 style="resize:none" wrap="hard"><!--コメント入力ボックス--></textarea><br><br>
+            <textarea name="comment" rows=10 cols=50 style="resize:none" wrap="hard"></textarea><br><br>
             <%}else{%>
             <textarea name="comment" rows=10 cols=50 style="resize:none" wrap="hard"><%=udb.getComment()%></textarea>
         <%}%>                                                                   <%--rows:表示行数 cols:1行あたりの最大文字 wrap:改行ルール--%>
                 
         
-        <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">    <!--Insert.javaから与えられた"ac"の情報をhs.getAttribute("ac")から
-                                                                                隠れデータとして反映させる-->
+        <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">    <!--Insert.javaから与えられた"ac"の情報をhs.getAttribute("ac")から隠れデータとして反映させる-->
+        <br>
         <input type="submit" name="btnSubmit" value="確認画面へ">
     </form>
         <br>
