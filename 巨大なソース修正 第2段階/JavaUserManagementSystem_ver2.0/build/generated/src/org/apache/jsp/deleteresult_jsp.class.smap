@@ -1,0 +1,12 @@
+SMAP
+deleteresult_jsp.java
+JSP
+*S JSP
+*F
++ 0 deleteresult.jsp
+deleteresult.jsp
+*L
+1,12:45
+13:57,3
+14,3:60
+*E

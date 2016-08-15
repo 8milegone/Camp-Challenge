@@ -1,0 +1,19 @@
+SMAP
+resultdetail_jsp.java
+JSP
+*S JSP
+*F
++ 0 resultdetail.jsp
+resultdetail.jsp
+*L
+1,2:46
+4,5:49
+8,9:54
+17,2:63,3
+19:69
+20,6:70,3
+26,6:88
+32:94,2
+33:96,3
+34,2:99
+*E
