@@ -8,15 +8,35 @@
     Created on : 2016/08/15, 16:27:30
     Author     : 8mile_000
 --%>
-
+<%--ログインのチェック--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% HttpSession hs = request.getSession(); %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>検索結果ページ</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h4>商品検索結果</h4>
+        <%--検索キーワード、検索結果数を表示--%>
+        検索件数; <%= sd.getQuery() %><br>
+        検索キーワード;<%= sd.getTotalResult() %><br>
+        <br><br>
+        <table border="1" class="list"></table>     <%--仕様要件②縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitemへ--%>
+        <tr>
+        <th>サムネイル</th>
+        <th>商品名</th>
+        <th>価格</th>
+        </tr>
+        <% for (int i = 0; i < 20; i++) { %>  <%--仕様要件①検索結果の上限は20件--%>
+            <tr>
+                <th><img src=<%= sdList.get(i).getImage() %>/></th>
+                <th><a href="Item?code=<%= sdList.get(i).getCode() %>"><%=sdList.get(i).getItemName() %></a></th>
+                <th><%= sdList.get(i).getPrice() %> 円</th>
+            </tr>
+            <% } %>
+        </table>
     </body>
 </html>

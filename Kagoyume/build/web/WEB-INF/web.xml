@@ -2,27 +2,31 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet>
         <servlet-name>UserDataDTO</servlet-name>
-        <servlet-class>UserDataDTO</servlet-class>
+        <servlet-class>Kagoyume.UserDataDTO</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserDataDAO</servlet-name>
-        <servlet-class>UserDataDAO</servlet-class>
+        <servlet-class>Kagoyume.UserDataDAO</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserData</servlet-name>
-        <servlet-class>UserData</servlet-class>
+        <servlet-class>Kagoyume.UserData</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>log</servlet-name>
-        <servlet-class>log</servlet-class>
+        <servlet-class>Kagoyume.log</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SampleAPI</servlet-name>
         <servlet-class>SampleAPI</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>YahooAPI</servlet-name>
-        <servlet-class>YahooAPI</servlet-class>
+        <servlet-name>JumsHelper</servlet-name>
+        <servlet-class>Kagoyume.JumsHelper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>Kagoyume.Registration</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserDataDTO</servlet-name>
@@ -45,8 +49,12 @@
         <url-pattern>/SampleAPI</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>YahooAPI</servlet-name>
-        <url-pattern>/YahooAPI</url-pattern>
+        <servlet-name>JumsHelper</servlet-name>
+        <url-pattern>/JumsHelper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/Registration</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
