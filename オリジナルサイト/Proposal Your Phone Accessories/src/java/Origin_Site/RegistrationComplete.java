@@ -10,8 +10,10 @@ package Origin_Site;
  * and open the template in the editor.
  */
 
+import DB_Manage.UserData;
+import DB_Manage.UserDataDTO;
+import DB_Manage.UserDataDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島 奨
  */
 public class RegistrationComplete extends HttpServlet {
 
@@ -35,16 +37,17 @@ public class RegistrationComplete extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //セッションスタート
         HttpSession hs = request.getSession();
         try {
             //リクエストパラメータも文字コードをUTF-8に変更
             request.setCharacterEncoding("UTF-8");
             
-            //アクセスルートチェック
-            String accesschk = request.getParameter("ac");
-            if(accesschk ==null || (Integer)hs.getAttribute("ac")!=Integer.parseInt(accesschk)){
-                throw new Exception("不正なアクセスです。");
-            }
+//            //アクセスルートチェック
+//            String accesschk = request.getParameter("ac");
+//            if(accesschk ==null || (Integer)hs.getAttribute("ac")!=Integer.parseInt(accesschk)){
+//                throw new Exception("不正なアクセスです。");
+//            }
             //セッションから値を取得
             UserData ud = (UserData)hs.getAttribute("ud");
             

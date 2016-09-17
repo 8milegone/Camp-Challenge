@@ -19,14 +19,11 @@ public class ItemDataclass implements Serializable{
     public int price; //価格
     public String itemurl; //商品URL
     public String itemcode; //商品コード
-    public String description; //商品説明
+    public String description; //レビュー詳細
     public String storename; //販売店名
     public double favorite;//レビューの星の個数
     public int reviewer; //評価
-    public String caption;
-    public String add1;
-    public String add2;
-    public String add3;
+    public String caption ;//アイテム詳細説明
     
     public ItemDataclass(){}
 
@@ -169,7 +166,7 @@ public class ItemDataclass implements Serializable{
     public void setReviewer(int reviewer) {
         this.reviewer = reviewer;
     }
-
+    
     /**
      * @return the caption
      */
@@ -182,47 +179,5 @@ public class ItemDataclass implements Serializable{
      */
     public void setCaption(String caption) {
         this.caption = caption;
-    }
-
-    /**
-     * @return the add1
-     */
-    public String getAdd1() {
-        return add1;
-    }
-
-    /**
-     * @param add1 the add1 to set
-     */
-    public void setAdd1(String add1) {
-        this.add1 = add1;
-    }
-
-    /**
-     * @return the add2
-     */
-    public String getAdd2() {
-        return add2;
-    }
-
-    /**
-     * @param add2 the add2 to set
-     */
-    public void setAdd2(String add2) {
-        this.add2 = add2;
-    }
-
-    /**
-     * @return the add3
-     */
-    public String getAdd3() {
-        return add3;
-    }
-
-    /**
-     * @param add3 the add3 to set
-     */
-    public void setAdd3(String add3) {
-        this.add3 = add3;
     }
 }

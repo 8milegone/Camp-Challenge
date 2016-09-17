@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
+        <servlet-name>DB_Search</servlet-name>
+        <servlet-class>DB_Manage.DB_Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DB_Search_Result</servlet-name>
+        <servlet-class>DB_Manage.DB_Search_Result</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_Category</servlet-name>
+        <servlet-class>Origin_Site.Search_Category</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DB_Search</servlet-name>
+        <url-pattern>/DB_Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DB_Search_Result</servlet-name>
+        <url-pattern>/DB_Search_Result</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Add</servlet-name>
         <servlet-class>Origin_Site.Add</servlet-class>
     </servlet>
@@ -62,15 +82,23 @@
     </servlet>
     <servlet>
         <servlet-name>Search</servlet-name>
-        <servlet-class>Origin_Site.Search</servlet-class>
+        <servlet-class>Origin_Site.Search_Keyword</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuyConfirm11</servlet-name>
         <servlet-class>Origin_Site.BuyConfirm</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginCheck</servlet-name>
-        <servlet-class>Origin_Site.LoginCheck</servlet-class>
+        <servlet-name>ItemData</servlet-name>
+        <servlet-class>DB_Manage.ItemData</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemDataDAO</servlet-name>
+        <servlet-class>DB_Manage.ItemDataDAO</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ItemDataDTO</servlet-name>
+        <servlet-class>DB_Manage.ItemDataDTO</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Add</servlet-name>
@@ -141,8 +169,20 @@
         <url-pattern>/BuyConfirm11</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LoginCheck</servlet-name>
-        <url-pattern>/LoginCheck</url-pattern>
+        <servlet-name>ItemData</servlet-name>
+        <url-pattern>/ItemData</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemDataDAO</servlet-name>
+        <url-pattern>/ItemDataDAO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ItemDataDTO</servlet-name>
+        <url-pattern>/ItemDataDTO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_Category</servlet-name>
+        <url-pattern>/Search_Category</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

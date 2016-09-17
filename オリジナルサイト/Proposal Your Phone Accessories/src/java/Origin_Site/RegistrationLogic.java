@@ -5,10 +5,6 @@
  
 package Origin_Site;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 追加要件:ユーザ名とパスワードが重複していると新規会員登録出来なくする。
  * @author 8mile_000

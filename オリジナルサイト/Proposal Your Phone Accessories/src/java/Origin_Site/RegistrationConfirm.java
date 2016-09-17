@@ -9,6 +9,7 @@ package Origin_Site;
  * and open the template in the editor.
  */
 
+import DB_Manage.UserData;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,36 +40,25 @@ public class RegistrationConfirm extends HttpServlet {
             //リクエストパラメータも文字コードをUTF-8に変更
             request.setCharacterEncoding("UTF-8");
             
-            //アクセスルートチェック
-            String accesschk = request.getParameter("ac");
-            if(accesschk ==null || (Integer)hs.getAttribute("ac")!=Integer.parseInt(accesschk)){
-                throw new Exception("不正なアクセスです。");
-            }
+//            //アクセスルートチェック
+//            String accesschk = request.getParameter("ac");
+//            if(accesschk ==null || (Integer)hs.getAttribute("ac")!=Integer.parseInt(accesschk)){
+//                throw new Exception("不正なアクセスです。");
+//            }
             
-            /*String destination ="";
-            //追加要件:同じユーザー名とパスワードが重複していれば登録不可
-            if(!RegistrationLogic.getInstance().checkUserDataInDB(udb)){
-                String warning = "既に同じ情報で登録されています。別のユーザー名またはパスワードを入力して下さい。";
-                request.setAttribute("warning",warning);
-                destination ="/registrationconfirm.jsp";
-                return;
-            }*/
-            
-
-
-
             //registration.jspのフォームから情報を取得して,JavaBeansに格納
             UserData ud = new UserData();
             ud.setName(request.getParameter("name"));
             ud.setPassword(request.getParameter("password"));
             ud.setMail(request.getParameter("mail"));
             ud.setAddress(request.getParameter("address"));
+            ud.setTerminal(request.getParameter("terminal"));
             
             //ユーザー情報をセッションに格納
             hs.setAttribute("ud",ud);
             System.out.println("Session update完了");
             
-            //仕様要件①ログを記録
+            //ログを記録
             Log.getInstance().logtext("registrationconfirmへ遷移しました。");
             
             request.getRequestDispatcher("/registrationconfirm.jsp").forward(request, response);

@@ -36,7 +36,7 @@
             </table>
             <input type="submit" name="login" value="ログイン">
         </form>
-        <p>会員登録していない方は<a href="Registration">こちら</a>から新規登録して下さい。</p>
+        <p>会員登録していない方は『<%=jh.register()%>』から登録して下さい。</p>
         <br>
         <%=jh.home()%>
     </body>

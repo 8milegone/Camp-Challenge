@@ -2,16 +2,19 @@ package Origin_Site;
 
 /*　
    ログイン管理ページ
-    どのページからも遷移できる。ログインしているかいないかで処理が分岐する
+    ログインしているかいないかで処理が分岐する
     ログインしていない状態(各ページの「ログイン」というリンクから)で遷移してきた場合は、ユーザー名とパスワードを入力するフォームが表示される。また、「新規会員登録」というリンクも表示される。
-    ログインに成功すると、その情報をログイン状態を管理できるセッションに書き込み、そのまま直前まで閲覧していたページに遷移する
-    ログインしている状態で(各ページの「ログアウト」というリンクから)遷移してきた場合は、ログアウト処理を行う(セッションの破棄、クッキーに保存されたセッションIDを破棄)その後topへ
+    ※未実装 ログインに成功すると、その情報をログイン状態を管理できるセッションに書き込み、そのまま直前まで閲覧していたページに遷移する
+    ログインしている状態で(各ページの「ログアウト」というリンクから)遷移してきた場合は、ログアウト処理を行う(セッションの破棄、クッキーに保存されたセッションIDを破棄)その後トップ画面へ
     ユーザーデータの削除フラグが1の場合は削除されたユーザーとして処理すること
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import DB_Manage.UserData;
+import DB_Manage.UserDataDTO;
+import DB_Manage.UserDataDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +24,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島　奨
  */
 public class Login extends HttpServlet {
 
@@ -45,7 +48,6 @@ public class Login extends HttpServlet {
             request.setCharacterEncoding("UTF-8");
             
             UserData ud = new UserData();
-            
             if(request.getParameter("login") != null) {
                 //フォームからの入力を取得し、UserDataBeansに格納
                 ud.setName(request.getParameter("name"));
@@ -55,7 +57,7 @@ public class Login extends HttpServlet {
                 UserDataDTO udd = new UserDataDTO();
                 ud.UDB2DTOMapping(udd);
             
-                //DBにデータを挿入
+                //DBからデータへアクセス
                 UserDataDTO login = UserDataDAO.getInstance().UserSearch(udd);
             
                 //View用のパラメータにマッピング(DTO→UserData)
@@ -66,22 +68,19 @@ public class Login extends HttpServlet {
                 hs.setAttribute("userdata", userdata);
                 System.out.println("Session update!!");
                 
-                //deleteFlgが1の場合（削除処理を行った場合）
+                //deleteFlgが1の場合（対象ユーザーが既に削除処理を行っていた場合）
                 if(userdata.getDeleteFlg() == 1) {
                     hs.invalidate();
-                    throw new Exception("お探しのユーザーはありません");
+                    throw new Exception("お探しのユーザーは見つかりませんでした。");
                 }
-                
                 //ログを記録
                 Log.getInstance().logtext("loginへ遷移しました。");
-                                
             //logoutの場合    
             }else {
                 //セッションリセット
                 hs.invalidate();                
             }
-                
-            request.getRequestDispatcher("/top.jsp").forward(request, response);
+            request.getRequestDispatcher("top.jsp").forward(request, response);
         }catch(Exception e){
             //何らかの理由で失敗したらエラーページにエラー文を渡して表示。想定は不正なアクセスとDBエラー
             request.setAttribute("error", e.getMessage());

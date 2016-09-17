@@ -15,7 +15,7 @@
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%@page import="Origin_Site.JumsHelper"%>
 
 <%
@@ -57,6 +57,18 @@
         住所:
         <input type="text" name="address" placeholder="現住所" value="<% if(reinput){out.print(ud.getAddress());} %>">
         <br><br>
+        
+        あなたのスマホ機種名(検索対象機種):
+        <select name="terminal">
+            <option value="">選択してください</option>
+            <option value="iPhone6s/iPhone6">iPhone6s/iPhone6</option>
+            <option value="iPhone6s Plus/iPhone6 Plus">iPhone6sPlus/iPhone6 Plus</option>
+            <option value="iPhoneSE/Phone5s">iPhoneSE/Phone5s</option>
+            <option value="Xperia X Performance">Xperia X Performance</option>
+            <option value="Galaxy S7 edge SC-02H">Galaxy S7 edge SC-02H</option>
+            <option value="iPhoneSE/Phone5s">iPhoneSE/Phone5s</option>
+        </select>
+       <br>
         <%--アクセスルートチェック--%>
         <input type="hidden" name="ac" value="<%= hs.getAttribute("ac")%>">
         <input type="submit" name="btnSubmit" value="確認画面">

@@ -5,11 +5,10 @@
     「トップページへ戻る」のリンクが、目立つ場所に設置されている
     
     Document   : registrationcomplete
-    Created on : 2016/08/15, 16:29:39
-    Author     : 8mile_000
+    Author     : 長島 奨
 --%>
 <%@page import="Origin_Site.JumsHelper"%>
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     UserData ud = (UserData)request.getAttribute("ud");
@@ -26,6 +25,7 @@
         パスワード: <%= ud.getPassword()%><br>
         メールアドレス: <%= ud.getMail()%><br>
         住所: <%= ud.getAddress()%><br><br>
+        あなたのスマホ機種名(検索対象機種):<%= ud.getTerminal()%><br><br>
         以上の内容で登録しました。
         <a href="top.jsp">トップページへ戻る</a>
         <HR>

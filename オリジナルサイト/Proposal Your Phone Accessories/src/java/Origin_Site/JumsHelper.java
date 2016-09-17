@@ -42,7 +42,7 @@ public class JumsHelper {
     }
     //ユーザー新規登録へのリンクを返却
     public String register() {
-        return "<a href=\""+registerURL+"\">新規登録</a>";
+        return "<a href=\""+registerURL+"\">会員登録する</a>";
     }
     
     /**
