@@ -61,12 +61,13 @@
         あなたのスマホ機種名(検索対象機種):
         <select name="terminal">
             <option value="">選択してください</option>
-            <option value="iPhone6s/iPhone6">iPhone6s/iPhone6</option>
-            <option value="iPhone6s Plus/iPhone6 Plus">iPhone6sPlus/iPhone6 Plus</option>
-            <option value="iPhoneSE/Phone5s">iPhoneSE/Phone5s</option>
-            <option value="Xperia X Performance">Xperia X Performance</option>
+            <option value="iPhone6s iPhone6">iPhone6s/iPhone6</option>
+            <option value="iPhone6s Plus iPhone6 Plus">iPhone6sPlus/iPhone6 Plus</option>
+            <option value="iPhoneSE Phone5s">iPhoneSE/Phone5s</option>
+            <option value="Xperia X Performance SO-04H">Xperia X Performance SO-04H</option>
+            <option value="AQUOS ZETA SH-04H">AQUOS ZETA SH-04H</option>
             <option value="Galaxy S7 edge SC-02H">Galaxy S7 edge SC-02H</option>
-            <option value="iPhoneSE/Phone5s">iPhoneSE/Phone5s</option>
+            
         </select>
        <br>
         <%--アクセスルートチェック--%>

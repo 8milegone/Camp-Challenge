@@ -5,7 +5,11 @@
  */
 package Origin_Site;
 
+import DB_Manage.UserData;
+import DB_Manage.UserDataDAO;
+import DB_Manage.UserDataDTO;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 
 /**
  * Yahoo Shopping APIのURLをまとめたクラス
@@ -33,7 +37,7 @@ public class YahooURL {
      * @return 検索結果のJsonファイルURL
      * @throws  UnsupportedEncodingException "UTF-8"というエンコード形式がない時の例外
      */
-    public static String querySearch(String query,int offset) throws UnsupportedEncodingException{
+    public static String querySearch_main(String query,int offset) throws UnsupportedEncodingException{
         query = java.net.URLEncoder.encode(query,"UTF-8");
         /*スマホアクセサリー全般のIDを指定*/
         String category ="38346";
@@ -44,10 +48,12 @@ public class YahooURL {
      * @return 商品の詳細情報が記載されたJsonファイルURL
      * @throws  UnsupportedEncodingException "UTF-8"というエンコード形式がない時の例外
      */
-    public static String categorySearch(String category) throws UnsupportedEncodingException{
-        category = java.net.URLEncoder.encode(category, "UTF-8");
-        return BASE_URL+"?appid="+APP_ID + "&category_id="+ category;
+    public static String querySearch_user(String query,String category,int offset) throws UnsupportedEncodingException, SQLException{
+         query = java.net.URLEncoder.encode(query,"UTF-8");
+         category = java.net.URLEncoder.encode(category,"UTF-8");
+            return BASE_URL+"?appid=" + APP_ID + "&query=" +query+ "&category_id=" + category + "&offset=" + offset;
     }
+
     /*
      * @param itemcode アイテム詳細
      * @return 商品の詳細情報が記載されたJsonファイルURL

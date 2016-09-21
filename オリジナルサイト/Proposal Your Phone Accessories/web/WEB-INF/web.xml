@@ -9,8 +9,48 @@
         <servlet-class>DB_Manage.DB_Search_Result</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Search_Category</servlet-name>
-        <servlet-class>Origin_Site.Search_Category</servlet-class>
+        <servlet-name>Search_category_mens</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_mens</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_ladys</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_ladys</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_fanction</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_fanction</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_water</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_water</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_protect</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_protect</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_apparel</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_apparel</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_designer</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_designer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_character</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_character</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_koukoutaku</servlet-name>
+        <servlet-class>Search_Category_Sheet.Search_category_koukoutaku</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_antigurea</servlet-name>
+        <servlet-class>Search_Category_Sheet.Search_category_antigurea</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_glass</servlet-name>
+        <servlet-class>Search_Category_Sheet.Search_category_glass</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DB_Search</servlet-name>
@@ -81,8 +121,12 @@
         <servlet-class>Origin_Site.RegistrationConfirm</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Search</servlet-name>
-        <servlet-class>Origin_Site.Search_Keyword</servlet-class>
+        <servlet-name>Search_user</servlet-name>
+        <servlet-class>Search_Keyword.Search_user</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_mens</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BuyConfirm11</servlet-name>
@@ -161,8 +205,8 @@
         <url-pattern>/RegistrationConfirm</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Search</servlet-name>
-        <url-pattern>/Search</url-pattern>
+        <servlet-name>Search_user</servlet-name>
+        <url-pattern>/Search_user</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BuyConfirm11</servlet-name>
@@ -181,8 +225,48 @@
         <url-pattern>/ItemDataDTO</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Search_Category</servlet-name>
-        <url-pattern>/Search_Category</url-pattern>
+        <servlet-name>Search_category_mens</servlet-name>
+        <url-pattern>/Search_category_mens</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_ladys</servlet-name>
+        <url-pattern>/Search_category_ladys</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_fanction</servlet-name>
+        <url-pattern>/Search_category_fanction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_water</servlet-name>
+        <url-pattern>/Search_category_water</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_protect</servlet-name>
+        <url-pattern>/Search_category_protect</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_apparel</servlet-name>
+        <url-pattern>/Search_category_apparel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_designer</servlet-name>
+        <url-pattern>/Search_category_designer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_character</servlet-name>
+        <url-pattern>/Search_category_character</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_koukoutaku</servlet-name>
+        <url-pattern>/Search_category_koukoutaku</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_antigurea</servlet-name>
+        <url-pattern>/Search_category_antigurea</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_glass</servlet-name>
+        <url-pattern>/Search_category_glass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

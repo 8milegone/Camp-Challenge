@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * 商品データを保持するクラス
- * @author user1
+ * @author 長島 奨
  */
 public class ItemDataclass implements Serializable{
     

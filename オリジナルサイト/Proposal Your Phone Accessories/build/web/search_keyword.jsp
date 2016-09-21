@@ -4,7 +4,7 @@
     検索キーワード、検索結果数を表示
     縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitemへ
     結果は上位20件まで
-    Document   : search
+    Document   : search_keyword.jsp
     Author     : 長島 奨
 --%>
 <%@page import="Origin_Site.ItemDataclass"%>
@@ -32,7 +32,32 @@
         <title>検索結果ページ</title>
     </head>
     <body>
+        <h4>スマホアイテム提案サイト Proposal Your Phone Accessories  </h4>
+        <%--ユーザー情報を表示--%>
+        <%--ログインを実装予定--%>
+        <%--ログアウトを実装予定--%>
+        <%--アカウントを作成していない場合は新規登録を表示--%>
+        <%--カートの中身確認ボタンを表示--%>
+        <%--アカウントを作成していない場合は新規登録を表示--%>
         
+        <%if(hs.getAttribute("userdata") == null) {%>
+        <%--ログイン情報が未記入なら--%>
+        
+        <%--ログインページ--%>
+         
+        <%=jh.login()%><br><%--JumsHelperから引用--%>
+        <%=jh.register()%><br><%--JumsHelperから引用--%>
+        <%=jh.cart()%><br><%--JumsHelperから引用--%>
+        
+        <%--ログイン情報がnullじゃなければ--%>
+        <% }else { %>
+        <%--ユーザー情報・ログアウト・カートを表示させる--%>
+        <p>ようこそ <a href="MyData"><%=ud.getName()%></a> さん</p>
+        <%=jh.logout()%><br>
+        <%=jh.cart()%>
+        <% } %>
+        <%--情報を見やすくさせる為、水平の罫線を作成--%>
+        <HR>
         <h4>商品検索結果</h4>
         <%--検索キーワード、検索結果数を表示--%>
         検索件数; <%=request.getAttribute("totalresults")%>件<br>
