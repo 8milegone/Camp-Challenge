@@ -24,6 +24,9 @@ public class ItemDataclass implements Serializable{
     public double favorite;//レビューの星の個数
     public int reviewer; //評価
     public String caption ;//アイテム詳細説明
+    public int fromprice; //最低価格
+    public int toprice; //最高価格
+    public String headline;//アイテムの見出し
     
     public ItemDataclass(){}
 
@@ -179,5 +182,19 @@ public class ItemDataclass implements Serializable{
      */
     public void setCaption(String caption) {
         this.caption = caption;
+    }
+   
+    /**
+     * @return the headline
+     */
+    public String getHeadline() {
+        return headline;
+    }
+
+    /**
+     * @param headline the headline to set
+     */
+    public void setHeadline(String headline) {
+        this.headline = headline;
     }
 }

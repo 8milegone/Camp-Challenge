@@ -66,6 +66,8 @@ public class Search_user extends HttpServlet {
             int totalresults = jp.getTotalResults();
             System.out.println(totalresults);
             ArrayList<ItemDataclass> array = jp.getItemSearchResult_query();
+            String search_method = "Search_user";
+            request.getSession().setAttribute("search_method", search_method);
             
             request.setAttribute("searchresults", array);
             
@@ -74,6 +76,8 @@ public class Search_user extends HttpServlet {
             request.setAttribute("query",query);
             request.setAttribute("page", page);
             request.setAttribute("totalresults", totalresults);
+            request.setAttribute("search_method",search_method);
+            
                         
            //ログを記録
             Log.getInstance().logtext("search_keywordへ遷移しました。");

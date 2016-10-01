@@ -6,7 +6,7 @@
 --%>
 
 <%@page import="java.util.LinkedHashMap"%>
-<%@page import="Origin_Site.BuyData"%>
+<%@page import="DB_Manage.BuyData"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Origin_Site.*"%>
 <%

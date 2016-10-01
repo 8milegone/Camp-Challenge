@@ -8,7 +8,7 @@
 --%>
 
 <%@page import="Origin_Site.JumsHelper"%>
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%
     HttpSession hs = request.getSession();
     JumsHelper jh = JumsHelper.getInstance();
@@ -27,6 +27,7 @@
         パスワード: <%= ud.getPassword()%><br>
         メールアドレス: <%= ud.getMail()%><br>
         住所: <%= ud.getAddress()%><br><br>
+        あなたのスマホ機種名(検索対象機種): <%=ud.getTerminal()%><br><br>
         以上の内容で変更しました。<br>
         <HR>
         <%--トップページ--%>

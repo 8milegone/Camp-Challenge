@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * BuyDataDTOから購入履歴表示用に変換するクラス。
  * BuyDataDTOにユーザからの情報を書き込むことはないので読み取り専用クラスとする。
- * @author user1
+ * @author 長島 奨
  */
 public class BuyData {
     private String itemcode;

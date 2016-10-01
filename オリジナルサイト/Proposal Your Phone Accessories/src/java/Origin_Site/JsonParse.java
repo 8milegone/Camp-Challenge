@@ -37,7 +37,7 @@ public class JsonParse {
  * @param jsonText
  */
 /*【ケース】男性目線*/
-public ArrayList Parse_keywordsearch_mens() throws Exception{
+public ArrayList Parse_keywordsearch() throws Exception{
     
     ArrayList<ItemDataclass> array = new ArrayList<ItemDataclass>();
 //    Map<String, Map<String, Object>> json = JSON.decode(jsonText);
@@ -62,30 +62,15 @@ public ArrayList Parse_keywordsearch_mens() throws Exception{
             String price_s = ((Map<String, Object>)result.get("Price")).get("_value").toString();
         //アイテムのレビュー評価を取得
             String Favorite = ((Map<String,Object>)result.get("Review")).get("Rate").toString();
-        //アイテム名を作成しこの文字列内からキーワード検索を行う。
-            String Target = Name;
         //アイテムコードを取得
             String itemcode = result.get("Code").toString();
-        //検索キーワードを設定
-            Pattern p = Pattern.compile("黒|カッコイイ|メンズ");
+        //アイテムの詳細説明を取得
+            String caption = result.get("Description").toString();
+        //アイテムの見出しを取得
+            String headline = result.get("Headline").toString();
             
-        
-        /*Matcherメソッドを使用して上で作成したTargetからキーワード検索ワードの結果を変数 m として作成*/
-            Matcher m = p.matcher(Target);
-            System.out.println("これは変数のmです"+m);
             ItemDataclass item = new ItemDataclass();
-            if (m.find()){
-                
             
-            int start = m.start(); //文字列の最初を指定
-            int end = m.end(); //文字列の最後を指定
-      
-            /*System上で該当アイテムを検索キーワードを[]で表示し確認できるようにする*/
-            String str  = Target.substring(0, start) + "【" + m.group() + "】"
-                            + Target.substring(end, Target.length());
-            System.out.println("○ [アイテム名]: "+ Name); //検索キーワードを[]で表示
-            System.out.println("該当箇所[アイテム名とレビュー本文]: "+str);
-      
             int price =Integer.parseInt(price_s);
             double favorite = Double.parseDouble(Favorite);
       
@@ -95,13 +80,13 @@ public ArrayList Parse_keywordsearch_mens() throws Exception{
             item.setItemurl(url);
             item.setFavorite(favorite);
             item.setItemcode(itemcode);
+            item.setCaption(caption);
+            item.setHeadline(headline);
             array.add(item);
             }
-    }   return array;
-        }else{
-            throw new Exception("検索結果がありませんでした"); 
-        }
-}
+        }   return array;
+    }
+
 /*【ケース】女性目線*/
 public ArrayList Parse_keywordsearch_ladys() throws Exception{
     

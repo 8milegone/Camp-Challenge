@@ -56,6 +56,7 @@ public class MyUpdateResult extends HttpServlet {
             ud.setPassword(request.getParameter("pass"));
             ud.setMail(request.getParameter("mail"));
             ud.setAddress(request.getParameter("address"));
+            ud.setTerminal(request.getParameter("terminal"));
                         
             //DTOオブジェクトにマッピング。DB専用のパラメータに変換
             UserDataDTO updateData = new UserDataDTO();

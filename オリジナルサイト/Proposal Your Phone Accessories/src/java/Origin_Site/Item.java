@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author yoshikawatoshio
+ * @author 長島 奨
  */
 public class Item extends HttpServlet {
 
@@ -45,13 +45,15 @@ public class Item extends HttpServlet {
             
             //Addで使用する
             hs.setAttribute("itemdata",item);
-            hs.setAttribute("itemdata", item);
             
             //アクセスチェッカの登録
             AccessCheck.makeAccessCheck(request);
             
-            hs.setAttribute("query", hs.getAttribute("query"));
-            hs.setAttribute("page",hs.getAttribute("page"));
+            hs.setAttribute("keyword", hs.getAttribute("keyword"));
+            hs.setAttribute("fromprice",hs.getAttribute("fromprice"));
+            hs.setAttribute("toprice",hs.getAttribute("toprice"));
+            
+            
             //ログを記録
             Log.getInstance().logtext("itemへ遷移しました。");
             

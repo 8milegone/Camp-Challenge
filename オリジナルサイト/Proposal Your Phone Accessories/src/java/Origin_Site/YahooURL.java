@@ -53,7 +53,20 @@ public class YahooURL {
          category = java.net.URLEncoder.encode(category,"UTF-8");
             return BASE_URL+"?appid=" + APP_ID + "&query=" +query+ "&category_id=" + category + "&offset=" + offset;
     }
-
+    /**
+     * @param price カテゴリー価格指定
+     * @return 商品の詳細情報が記載されたJsonファイルURL
+     * @throws  UnsupportedEncodingException "UTF-8"というエンコード形式がない時の例外
+     */
+    public static String priceSearch_user(String query,String category,String fromprice,String toprice,int offset) throws UnsupportedEncodingException, SQLException{
+         query = java.net.URLEncoder.encode(query,"UTF-8");
+         category = java.net.URLEncoder.encode(category,"UTF-8");
+         fromprice = java.net.URLEncoder.encode(fromprice,"UTF-8");
+         toprice = java.net.URLEncoder.encode(toprice,"UTF-8");
+            return BASE_URL+"?appid=" + APP_ID + "&query=" +query+"&price_from=" + fromprice + "&price_to=" + toprice + "&category_id=" + category + "&offset=" + offset;
+    }
+    
+    
     /*
      * @param itemcode アイテム詳細
      * @return 商品の詳細情報が記載されたJsonファイルURL

@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島 奨
  */
 public class CartDataDAO {
     

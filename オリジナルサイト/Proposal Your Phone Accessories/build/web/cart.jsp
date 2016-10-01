@@ -11,10 +11,10 @@
 
     Document   : cart
     Created on : 2016/08/15, 16:30:15
-    Author     : 8mile_000
+    Author     : 長島 奨
 --%>
 
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Origin_Site.CartData"%>

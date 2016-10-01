@@ -17,8 +17,8 @@
         <servlet-class>Search_Category_Case.Search_category_ladys</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Search_category_fanction</servlet-name>
-        <servlet-class>Search_Category_Case.Search_category_fanction</servlet-class>
+        <servlet-name>Search_category_functionality</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_functionality</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Search_category_water</servlet-name>
@@ -51,6 +51,18 @@
     <servlet>
         <servlet-name>Search_category_glass</servlet-name>
         <servlet-class>Search_Category_Sheet.Search_category_glass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_case_price</servlet-name>
+        <servlet-class>Search_Category_Case.Search_category_case_price</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search_category_sheet_price</servlet-name>
+        <servlet-class>Search_Category_Sheet.Search_category_sheet_price</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Icon_detail</servlet-name>
+        <servlet-class>Origin_Site.Icon_detail</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DB_Search</servlet-name>
@@ -233,8 +245,8 @@
         <url-pattern>/Search_category_ladys</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Search_category_fanction</servlet-name>
-        <url-pattern>/Search_category_fanction</url-pattern>
+        <servlet-name>Search_category_functionality</servlet-name>
+        <url-pattern>/Search_category_functionality</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Search_category_water</servlet-name>
@@ -267,6 +279,18 @@
     <servlet-mapping>
         <servlet-name>Search_category_glass</servlet-name>
         <url-pattern>/Search_category_glass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_case_price</servlet-name>
+        <url-pattern>/Search_category_case_price</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search_category_sheet_price</servlet-name>
+        <url-pattern>/Search_category_sheet_price</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Icon_detail</servlet-name>
+        <url-pattern>/Icon_detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

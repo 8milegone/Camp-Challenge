@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author yoshikawatoshio
+ * @author 長島 奨
  */
 public class MyHistory extends HttpServlet {
 

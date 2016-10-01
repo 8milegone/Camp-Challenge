@@ -6,29 +6,26 @@
 package Origin_Site;
 
 /**
- *
- * @author 8mile_000
+ * Cartのアイテム情報を定義するメソッド
+ * @author 長島 奨
  */
 import java.text.SimpleDateFormat;
 import java.io.Serializable;
-/**
- *
- * @author user1
- */
+
 public class CartData implements Serializable {
-    private String itemcode;
-    private String itemname;
-    private int quantity;
-    private String imgurl;
-    private int price;
-    private String newDate;
+    private String itemcode;/*アイテムのJANコード*/
+    private String itemname;/*カートに入れたアイテム名*/
+    private int quantity;   /*アイテムカートの個数*/
+    private String imgurl;  /*アイテムの画像URL*/
+    private int price;      /*アイテムの価格*/
+    private String newDate; /*カート追加日時*/
     
     CartData(ItemDataclass id,int qty){
-        this.itemcode = id.getItemcode();
-        this.itemname = id.getName();
+        this.itemcode = id.getItemcode();   /*ItemDataclassから情報取得*/
+        this.itemname = id.getName();       /*ItemDataclassから情報取得*/
         this.quantity = qty;
-        this.imgurl = id.getImageurl();
-        this.price = id.getPrice();       
+        this.imgurl = id.getImageurl();     /*ItemDataclassから情報取得*/
+        this.price = id.getPrice();         /*ItemDataclassから情報取得*/       
     }
     
     CartData(CartDataDTO cdd){

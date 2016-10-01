@@ -9,7 +9,7 @@
 --%>
 
 <%@page import="Origin_Site.JumsHelper"%>
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%
     HttpSession hs = request.getSession();
     UserData ud = (UserData)hs.getAttribute("userdata");
@@ -29,7 +29,7 @@
         パスワード: <%= ud.getPassword()%><br>
         メールアドレス: <%= ud.getMail()%><br>
         住所: <%= ud.getAddress()%><br>
-        登録日時：<%= ud.getNewDate() %><br>
+        <% if(ud.getNewDate()!=null){ out.println("登録日時："+ud.getNewDate());} %><br>
         <br>
         <form action="MyUpdate" method="POST">
             <%--アクセスルートチェック--%>

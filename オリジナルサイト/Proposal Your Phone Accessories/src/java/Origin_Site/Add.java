@@ -9,7 +9,7 @@ package Origin_Site;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島 奨
  */
 
 import java.io.IOException;
@@ -20,10 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author yoshikawatoshio
- */
 public class Add extends HttpServlet {
 
     /**
@@ -44,51 +40,52 @@ public class Add extends HttpServlet {
             HttpSession hs = request.getSession();
             ItemDataclass item = (ItemDataclass)hs.getAttribute("itemdata");            
             
-            //直接商品をカートに入れられないように防止している(アクセスすると商品ページへと遷移する。)
+            /*直接商品をカートに入れられないように防止している(アクセスすると商品ページへと遷移する。)*/
             String ac = request.getParameter("ac");
             if(ac == null || hs.getAttribute("ac") == null ||  !ac.equals(hs.getAttribute("ac").toString())){
                 response.sendRedirect("Item?itemcode=" + item.getItemcode());
                 }else{
-            //このページの更新を防ぐ
+            /*このページの更新を防ぐ*/
                     hs.removeAttribute("ac");
-            //セッションから商品詳細を取り出し、カートクラスにマッピング
-                    int qty = Integer.parseInt(request.getParameter("qty"));
+            /*セッションから商品詳細を取り出し、カートクラスにマッピング*/
+                    int qty = Integer.parseInt(request.getParameter("qty"));    //アイテムの個数
                     CartData cd = new CartData(item,qty);
                     ArrayList<CartData> cart = new ArrayList<CartData>();
 
-            //ログインしていないならばゲストカートへカートを登録
-                    if(hs.getAttribute("login") == null){
-            //セッションにほかのカート情報があれば取得しなおす
-                        if(hs.getAttribute("guestcart") != null){
-                            cart = (ArrayList<CartData>)hs.getAttribute("guestcart");
-                            for(CartData acd : cart){
-            //カートに同じ商品が入っていた場合、個数だけを変更する
-                                if((acd.getItemcode().equals(cd.getItemcode()))){
-                                    qty += acd.getQuantity();
-                                    cart.remove(acd);
-                                    cd.setQuantity(qty);
+            /*ログインしていないならばゲストカートへカートを登録*/
+            if(hs.getAttribute("login") == null){
+            /*セッションにほかのカート情報があれば取得しなおす*/
+                if(hs.getAttribute("guestcart") != null){
+                    cart = (ArrayList<CartData>)hs.getAttribute("guestcart");
+                    for(CartData acd : cart){
+            /*カートに同じ商品が入っていた場合、個数だけを変更する*/
+                        if((acd.getItemcode().equals(cd.getItemcode()))){
+                            qty += acd.getQuantity();   //+=で個数を追加する
+                            cart.remove(acd);          //アイテム情報が重複しないように
+                            cd.setQuantity(qty);       //アイテムの個数を設定する
                             break;
-                                }                    
-                            }                
-                        }                
-            //ゲストカートにアイテム追加
-                    cart.add(cd);
-                    hs.setAttribute("guestcart", cart);                
-                            }else{
-                                int userID = Integer.parseInt(hs.getAttribute("userID").toString());
-                                if(hs.getAttribute("cart") != null){
-                                    cart = (ArrayList<CartData>)hs.getAttribute("cart");
-                                    for(CartData acd : cart){
-            //カートに同じ商品が入っていた場合、個数だけを変更する
-                                        if((acd.getItemcode().equals(cd.getItemcode()))){
-                                            qty += acd.getQuantity();
-                                            cart.remove(acd);
-                                            cd.setQuantity(qty);
-                                            CartDataDAO.getInstance().delete(userID, new CartDataDTO(cd));
-                                    break;
-                                        }                    
-                                    }                
-                                }
+                            }                    
+                    }                
+                }                
+            /*ゲストカートに入れたアイテムを会員のカートに追加*/
+            cart.add(cd);
+            hs.setAttribute("guestcart", cart);                
+            }else{  /*ログイン済みの場合*/
+                int userID = Integer.parseInt(hs.getAttribute("userID").toString());
+                if(hs.getAttribute("cart") != null){
+                    cart = (ArrayList<CartData>)hs.getAttribute("cart");
+                    for(CartData acd : cart){
+            /*カートに同じ商品が入っていた場合、個数だけを変更する*/
+                        if((acd.getItemcode().equals(cd.getItemcode()))){
+                            qty += acd.getQuantity();       //+=で個数を追加する
+                            cart.remove(acd);               //アイテム情報が重複しないように
+                            cd.setQuantity(qty);            //アイテムの個数を設定する
+            /**/                
+                            CartDataDAO.getInstance().delete(userID, new CartDataDTO(cd));
+                            break;
+                        }                    
+                    }                
+                }
             //新しい商品のとき、カートに追加しDBに新しく挿入する
                                 cart.add(cd);
                                 CartDataDAO.getInstance().insert(userID, new CartDataDTO(cd));

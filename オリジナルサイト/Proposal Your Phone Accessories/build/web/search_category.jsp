@@ -10,7 +10,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% HttpSession hs = request.getSession(); 
    JumsHelper jh = JumsHelper.getInstance();
-   ArrayList<ItemDataclass> array = (ArrayList<ItemDataclass>)request.getAttribute("searchresults"); 
+   ArrayList<ItemDataclass> array = (ArrayList<ItemDataclass>)request.getAttribute("searchresults");
+   
     //ログインのチェック
     boolean loginChk = false;   
     UserData ud = (UserData)hs.getAttribute("userdata");
@@ -37,7 +38,8 @@
         <%--ログイン情報が未記入なら--%>
         
         <%--ログインページ--%>
-         
+        <p>全機種での該当アイテムを表示しています。</p>
+        <p>会員登録から『あなたの機種』を登録すると『あなたの機種』に対応するアイテムのみを表示できます。</p>
         <%=jh.login()%><br><%--JumsHelperから引用--%>
         <%=jh.register()%><br><%--JumsHelperから引用--%>
         <%=jh.cart()%><br><%--JumsHelperから引用--%>
@@ -46,6 +48,8 @@
         <% }else { %>
         <%--ユーザー情報・ログアウト・カートを表示させる--%>
         <p>ようこそ <a href="MyData"><%=ud.getName()%></a> さん</p>
+        <p><%=ud.getName()%>さんの<a href="MyData"><%=ud.getTerminal()%></a>対応のアイテムのみをカテゴリー検索から表示しています。</p>
+        
         <%=jh.logout()%><br>
         <%=jh.cart()%>
         <% } %>
@@ -54,7 +58,12 @@
         <h4>商品検索結果</h4>
         <%--検索キーワード、検索結果数を表示--%>
         検索件数; <%=request.getAttribute("totalresults")%>件<br>
-        検索キーワード;<%=request.getParameter("query")%><br>
+                       <%if(request.getAttribute("keyword")!=null){%>
+                                    <% out.print("カテゴリー; "+request.getAttribute("keyword"));}%>
+                       <%if(request.getAttribute("fromprice")!=null){%>                 
+                                    <%out.print("コストパフォーマンス重視を重視; "+request.getAttribute("fromprice"));}%>
+                       <%if(request.getAttribute("toprice")!=null){%>    
+                                    <%out.print(request.getAttribute("toprice"));}%>
         <br><br>
         <table border="1">    <%--仕様要件②縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitemへ--%>
         <tr>
@@ -70,7 +79,7 @@
                 <%--商品名--%>
                 <td><a href="Item?itemcode=<%=item.getItemcode() %>"><%=item.getName() %></a></td>
                 <%--価格--%>
-                <td><%=item.getPrice() %>円</td>
+                <td>    <%=item.getPrice() %>円     </td>
             </tr>
             <% } %>
         </table>

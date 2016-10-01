@@ -16,7 +16,7 @@ import java.util.*;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島 奨
  */
 public class BuyDataDAO {
     
@@ -25,15 +25,15 @@ public class BuyDataDAO {
     }
     
     //購入履歴を挿入
-    public void insert(int userID, String itemCode, int type) throws SQLException, FileNotFoundException,IllegalMonitorStateException{
+    public void insert(int userID, String itemCode, int dispatch) throws SQLException, FileNotFoundException,IllegalMonitorStateException{
         Connection con = null;
         PreparedStatement st = null;
         try{
             con = DBManager.getConnection();
-            st =  con.prepareStatement("INSERT INTO buy_t(userID,itemCode,type,buyDate) VALUES(?,?,?,?)");
+            st =  con.prepareStatement("INSERT INTO buy_t(userID,itemCode,dispatch,buyDate) VALUES(?,?,?,?)");
             st.setInt(1, userID);
             st.setString(2,itemCode);
-            st.setInt(3,type);
+            st.setInt(3,dispatch);
             st.setTimestamp(4,new Timestamp(System.currentTimeMillis()));
             st.executeUpdate();
             System.out.println("buydata insert completed");
@@ -63,7 +63,7 @@ public class BuyDataDAO {
                 bdd.setBuyID(rs.getInt(1));
                 bdd.setUserID(rs.getInt(2));
                 bdd.setItemcode(rs.getString(3));
-                bdd.setType(rs.getInt(4));
+                bdd.setDispatch(rs.getInt(4));
                 bdd.setBuydate(rs.getTimestamp(5));
                 history.add(bdd);
             }

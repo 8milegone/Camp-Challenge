@@ -9,6 +9,7 @@
     Author     : 8mile_000
 --%>
 
+<%@page import="DB_Manage.UserData"%>
 <%@page import="Origin_Site.*"%>
 <%@page session="false"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"

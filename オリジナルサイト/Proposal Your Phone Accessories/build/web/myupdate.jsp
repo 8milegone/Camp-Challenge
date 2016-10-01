@@ -8,7 +8,7 @@
     Author     : 8mile_000
 --%>
 
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%@page import="Origin_Site.JumsHelper"%>
 <%
     HttpSession hs = request.getSession();
@@ -35,6 +35,18 @@
             <br><br>
             住所: 
             <input type="text" name="address" value="<%= ud.getAddress() %>">
+            <br><br>
+            あなたのスマホ機種名(検索対象機種):
+        <select name="terminal">
+            <option value="">選択してください</option>
+            <option value="iPhone6s iPhone6">iPhone6s/iPhone6</option>
+            <option value="iPhone6s Plus iPhone6 Plus">iPhone6sPlus/iPhone6 Plus</option>
+            <option value="iPhoneSE iPhone5s">iPhoneSE/Phone5s</option>
+            <option value="Xperia X Performance SO-04H">Xperia X Performance SO-04H</option>
+            <option value="AQUOS ZETA SH-04H">AQUOS ZETA SH-04H</option>
+            <option value="Galaxy S7 edge SC-02H">Galaxy S7 edge SC-02H</option>
+            
+        </select>
             <br><br>
             <%--アクセスルートチェック--%>
             <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">

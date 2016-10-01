@@ -7,7 +7,7 @@
     Author     : 8mile_000
 --%>
 
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%
     HttpSession hs = request.getSession();
     UserData ud = (UserData)hs.getAttribute("userdata");

@@ -53,14 +53,14 @@ public class BuyComplete extends HttpServlet {
                 udb.setTotal(total);
                 System.out.println("total..."+(Integer)hs.getAttribute("total"));
 
-                int type = Integer.parseInt(request.getParameter("type"));
+                int dispatch = Integer.parseInt(request.getParameter("dispatch"));
                 
                 ArrayList<CartData> cart = (ArrayList<CartData>)hs.getAttribute("cart");
 
                 //商品情報を配列に入れる
                 for(int i = 0; i< cart.size(); i++){
                     //購入履歴を挿入
-                    BuyDataDAO.getInstance().insert(udb.getUserID(), cart.get(i).getItemcode(), type);
+                    BuyDataDAO.getInstance().insert(udb.getUserID(), cart.get(i).getItemcode(), dispatch);
                     
                 //}
                 UserDataDTO udd = new UserDataDTO();

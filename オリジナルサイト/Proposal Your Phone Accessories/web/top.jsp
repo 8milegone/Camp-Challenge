@@ -4,12 +4,10 @@
     キーワード検索フォームが設置されている。検索の遷移先はsearchで、GETメソッド。未入力ならエラーを表示
 
     Document   : top
-    Created on : 2016/08/15, 16:27:06
-    Author     : 8mile_000
+    Author     : 長島 奨
 --%>
 <%@page import="DB_Manage.UserData"%>
 <%@page import="Origin_Site.JumsHelper"%>
-<%--仕様要件③検索欄が未入力ならエラーとする--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
   HttpSession hs = request.getSession();
@@ -58,28 +56,43 @@
         <%--情報を見やすくさせる為、水平の罫線を作成--%>
         <HR>
         
-        <form action="Search_user" method="GET">     <%--仕様要件:①遷移先はsearch②GETメソッド--%>
+        <form action="Search_user" method="GET">     
         商品キーワード検索<br>
         <font color="#ff0000" >※何も記入せずに検索ボタンを押すとエラーが表示されます。</font><br>
         <input type="text" name="query" placeholder="キーワードを入力" style="width:100px">
         <input type="submit" name="btnSubmit" value="検索" style="width:40px">
-        </form> 
-        スマホケース
+        </form>
         <br><br>
-        デザインを重視 <a href="Search_category_mens">男性目線</a> <br>
-                       <a href="Search_category_ladys">女性目線</a> <br>
-        機能性を重視 <a href="Search_category_fanction">機能性を重視</a> <br>
-        耐衝撃強度を重視 <a href="Search_category_water">耐防水にこだわる(iPhoneのみ)</a> <br>
+        <p>スマホケース</p>
+        <br><br>
+        ♡デザインを重視 <a href="Search_category_mens">> 男性目線</a> <br>
+                        <a href="Search_category_ladys">> 女性目線</a> <br>
+        <a href="Search_category_functionality">□機能性を重視</a> <br>
+        ○耐衝撃強度を重視 <br><a href="Search_category_water">耐防水にこだわる(iPhoneのみ)</a> <br>
                          <a href="Search_category_protect">こだわらない</a> <br>
         ブランド×コラボ <a href="Search_category_apparel">アパレルブランド</a> <br>
                          <a href="Search_category_designer">デザイナーズブランド</a> <br>
-                         <a href="Search_category_character">キャラクター</a> <br><br>
+                         <a href="Search_category_character">キャラクター</a> <br>
+        コストパフォーマンスを重視　(金額は整数で入力して下さい)
+        <form action="Search_category_case_price" method="GET">  
+        最低金額
+        <input type="text" name="fromprice" placeholder="最低金額を入力" style="width:75px">￥～<input type="text" name="toprice" placeholder="最高金額を入力" style="width:75px">￥
+        <input type="submit" name="btnSubmit" value="検索" style="width:35px">
+        </form> 
+        <br><br>
         液晶シート
         <br><br>
         <a href="Search_category_koukoutaku">綺麗な見栄えを重視</a> <br>
         <a href="Search_category_antigurea">操作性や機能性を重視</a> <br>
-        <a href="Search_category_glass">耐衝撃強度を重視</a> <br><br>
-        
+        <a href="Search_category_glass">耐衝撃強度を重視</a> <br>
+        コストパフォーマンスを重視　(金額は整数で入力して下さい)
+        <form action="Search_category_sheet_price" method="GET"> 
+        最低金額
+        <input type="text" name="fromprice" placeholder="最低金額を入力" style="width:75px">￥～<input type="text" name="toprice" placeholder="最高金額を入力" style="width:75px">￥
+        <input type="submit" name="btnSubmit" value="検索" style="width:35px">
+        </form>
+<br><br> <a href="Icon_detail">各カテゴリについての説明</a><br><br>
+
 <p>こんなことは経験したことはないでしょうか？<br>
 スマホを購入したのはいいけど、どんなケース、シートを選べばいいだろう…?<br>
 ショッピングサイトを見てもたくさん情報があって、よくわからなくなる…<br>

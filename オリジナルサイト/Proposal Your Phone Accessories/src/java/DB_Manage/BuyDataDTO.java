@@ -25,7 +25,7 @@ public class BuyDataDTO {
     private String imgurl;
     private int price;
     private int quantity;
-    private int type;
+    private int dispatch;
     private Timestamp buyDate;
 
     public BuyDataDTO(){}
@@ -37,7 +37,7 @@ public class BuyDataDTO {
         this.imgurl   = cd.getImgurl();
         this.price    = cd.getPrice();
         this.quantity = cd.getQuantity();
-        this.type     = type;
+        this.dispatch = dispatch;
     }
         
     public int getBuyID(){ return this.buyID;}
@@ -61,8 +61,8 @@ public class BuyDataDTO {
     public int getQuantity(){ return this.quantity;}
     public void setQuantity(int qty){ this.quantity = qty;}
     
-    public int getType(){ return this.type;}
-    public void setType(int type){ this.type = type;}
+    public int getDispatch(){ return this.dispatch;}
+    public void setDispatch(int dispatch){ this.dispatch = dispatch;}
     
     public Timestamp getBuydate(){ return this.buyDate;}
     public void setBuydate(Timestamp bd){ this.buyDate = bd;}

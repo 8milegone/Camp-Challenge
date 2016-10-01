@@ -9,7 +9,7 @@
 
 <%@page import="Origin_Site.ItemDataclass"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Origin_Site.UserData"%>
+<%@page import="DB_Manage.UserData"%>
 <%@page import="Origin_Site.JumsHelper"%>
 <%
     JumsHelper jh = JumsHelper.getInstance();
@@ -49,9 +49,8 @@
                     <span style="color: red">&yen;<%=item.price%></span>
                     個数:<%=hs.getAttribute("qty")%>個</div>
                 <br>
-        
-                <a href="Search?query=<%=hs.getAttribute("query")%>&page=<%=hs.getAttribute("page")%>">検索結果に戻る</a>
+        <a href="<%=hs.getAttribute("search_method") %>?query=<%=hs.getAttribute("query")%>&page=<%=hs.getAttribute("page")%>">検索結果に戻る</a><br>
         <br>
-        <a href="top.jsp">トップページへ戻る</a>
+        <%=jh.home()%>
     </body>
 </html>
