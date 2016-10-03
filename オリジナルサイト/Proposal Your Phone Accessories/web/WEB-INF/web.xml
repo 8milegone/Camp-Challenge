@@ -64,6 +64,10 @@
         <servlet-name>Icon_detail</servlet-name>
         <servlet-class>Origin_Site.Icon_detail</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Item_price</servlet-name>
+        <servlet-class>Origin_Site.Item_price</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DB_Search</servlet-name>
         <url-pattern>/DB_Search</url-pattern>
@@ -291,6 +295,10 @@
     <servlet-mapping>
         <servlet-name>Icon_detail</servlet-name>
         <url-pattern>/Icon_detail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Item_price</servlet-name>
+        <url-pattern>/Item_price</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

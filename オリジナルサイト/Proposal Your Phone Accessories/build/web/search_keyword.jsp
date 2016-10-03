@@ -82,6 +82,9 @@
             </tr>
             <% } %>
         </table>
+        <br>
+        <%=jh.pages_user(request)%>
+        <br>
         <%=jh.home()%>
     </body>
 </html>

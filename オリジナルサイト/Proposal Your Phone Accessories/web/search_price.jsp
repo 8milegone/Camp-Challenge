@@ -1,22 +1,17 @@
 <%-- 
-    検索結果ページ
-    topから検索により遷移できる。YahooショッピングAPIに直接検索キーワードを渡し、その結果を受け取り＆表示している
-    検索キーワード、検索結果数を表示
-    縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitemへ
-    結果は上位20件まで
-    Document   : search_keyword.jsp
+    Document   : serach_price
     Author     : 長島 奨
 --%>
-<%@page import="Origin_Site.ItemDataclass"%>
-<%@page import="java.util.List"%>
+
 <%@page import="DB_Manage.UserData"%>
+<%@page import="Origin_Site.ItemDataclass"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Origin_Site.JumsHelper"%>
-<%--ログインのチェック--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% HttpSession hs = request.getSession(); 
    JumsHelper jh = JumsHelper.getInstance();
-   ArrayList<ItemDataclass> array = (ArrayList<ItemDataclass>)request.getAttribute("searchresults"); 
+   ArrayList<ItemDataclass> array = (ArrayList<ItemDataclass>)request.getAttribute("searchresults");
+   
     //ログインのチェック
     boolean loginChk = false;   
     UserData ud = (UserData)hs.getAttribute("userdata");
@@ -24,7 +19,6 @@
         loginChk =true;
     }
 %>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,8 +38,8 @@
         <%--ログイン情報が未記入なら--%>
         
         <%--ログインページ--%>
-        <p>全機種の中から該当アイテムを表示しています。</p>
-        <p>会員登録から『あなたの機種』を登録すると『あなたの機種』に対応するアイテムのみを表示できます。</p> 
+        <p>全機種での該当アイテムを表示しています。</p>
+        <p>会員登録から『あなたの機種』を登録すると『あなたの機種』に対応するアイテムのみを表示できます。</p>
         <%=jh.login()%><br><%--JumsHelperから引用--%>
         <%=jh.register()%><br><%--JumsHelperから引用--%>
         <%=jh.cart()%><br><%--JumsHelperから引用--%>
@@ -54,6 +48,8 @@
         <% }else { %>
         <%--ユーザー情報・ログアウト・カートを表示させる--%>
         <p>ようこそ <a href="MyData"><%=ud.getName()%></a> さん</p>
+        <p><%=ud.getName()%>さんの<a href="MyData"><%=ud.getTerminal()%></a>対応のアイテムのみをカテゴリー検索から表示しています。</p>
+        
         <%=jh.logout()%><br>
         <%=jh.cart()%>
         <% } %>
@@ -62,9 +58,14 @@
         <h4>商品検索結果</h4>
         <%--検索キーワード、検索結果数を表示--%>
         検索件数; <%=request.getAttribute("totalresults")%>件<br>
-        検索キーワード;<%=request.getParameter("query")%><br>
+                       <%if(request.getAttribute("keyword")!=null){%>
+                                    <% out.print("カテゴリー; "+request.getAttribute("keyword"));}%>
+                       <%if(request.getAttribute("fromprice")!=null){%>                 
+                                    <%out.print("コストパフォーマンス重視を重視; "+request.getAttribute("fromprice"));}%>
+                       <%if(request.getAttribute("toprice")!=null){%>    
+                                    <%out.print(request.getAttribute("toprice"));}%>
         <br><br>
-        <table border="1">    <%--仕様要件②縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitemへ--%>
+        <table border="1">    <%--仕様要件②縦のリスト型に表示。サムネイルと、その横に商品名、金額が載っている。クリックでitem_priceへ--%>
         <tr>
         <th>サムネイル</th>
         <th>商品名</th>
@@ -74,17 +75,17 @@
         <%ItemDataclass item = (ItemDataclass)array.get(i);%>
             <tr>
                 <%--商品画像--%>
-                <td><a href="Item?itemcode=<%=item.getItemcode() %>"><img src="<%=item.getImageurl() %>"></a></td>
+                <td><a href="Item_price?itemcode=<%=item.getItemcode() %>"><img src="<%=item.getImageurl() %>"></a></td>
                 <%--商品名--%>
-                <td><a href="Item?itemcode=<%=item.getItemcode() %>"><%=item.getName() %></a></td>
+                <td><a href="Item_price?itemcode=<%=item.getItemcode() %>"><%=item.getName() %></a></td>
                 <%--価格--%>
-                <td><%=item.getPrice() %>円</td>
+                <td>    <%=item.getPrice() %>円     </td>
             </tr>
             <% } %>
         </table>
         <br>
-        <%=jh.pages_user(request)%>
+        <%=jh.pages_price(request)%><%--JumsHelperから引用--%>
         <br>
-        <%=jh.home()%>
+        <%=jh.home()%><%--JumsHelperから引用--%>
     </body>
 </html>

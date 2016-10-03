@@ -5,8 +5,7 @@
     「購入が完了しました」と表示
 
     Document   : buycomplete
-    Created on : 2016/08/15, 16:30:38
-    Author     : 8mile_000
+    Author     : 長島 奨
 --%>
 
 <%@page import="DB_Manage.UserData"%>
@@ -25,9 +24,9 @@
         <title>購入完了ページ</title>
     </head>
     <body>
-        <h3>ありがとうございました!購入が完了しました。</h3>
+        <h3>ありがとうございました! 購入が完了致しました。</h3>
 
-            <p>購入総額:;<%= ud.getTotal() %>円</p>
+            <p>購入総額 : <%= ud.getTotal() %>円</p>
         <%= JumsHelper.getInstance().home() %>
     </body>
 </html>

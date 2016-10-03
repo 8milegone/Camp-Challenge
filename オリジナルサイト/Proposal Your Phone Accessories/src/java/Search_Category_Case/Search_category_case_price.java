@@ -37,7 +37,7 @@ public class Search_category_case_price extends HttpServlet {
         HttpSession hs = request.getSession();
         try {
             //検索ページの取得
-            int page = 3;
+            int page = 1;
             if(request.getParameter("page") != null){
                 page = Integer.parseInt(request.getParameter("page"));
             }
@@ -77,6 +77,8 @@ public class Search_category_case_price extends HttpServlet {
                     
                     request.getSession().setAttribute("query", query);
                     request.getSession().setAttribute("page", page); 
+                    request.getSession().setAttribute("fromprice", fromprice);
+                    request.getSession().setAttribute("toprice", toprice);
                     request.getSession().setAttribute("search_method", search_method);
                     
                     request.setAttribute("searchresults", array);
@@ -88,9 +90,9 @@ public class Search_category_case_price extends HttpServlet {
                     request.setAttribute("search_method",search_method);
                     
                     //ログを記録
-                    Log.getInstance().logtext("search_categoryへ遷移しました。");
+                    Log.getInstance().logtext("search_priceへ遷移しました。");
             
-                    request.getRequestDispatcher("/search_category.jsp").forward(request, response);
+                    request.getRequestDispatcher("/search_price.jsp").forward(request, response);
             }else{
                 String query = "";
                 String category = "38347";
@@ -110,7 +112,10 @@ public class Search_category_case_price extends HttpServlet {
                     
                     request.getSession().setAttribute("query", query);
                     request.getSession().setAttribute("page", page);
+                    request.getSession().setAttribute("fromprice", fromprice);
+                    request.getSession().setAttribute("toprice", toprice);
                     request.getSession().setAttribute("search_method", search_method);
+                    
                     
                     request.setAttribute("searchresults", array);
                     request.setAttribute("query",query);
@@ -121,9 +126,9 @@ public class Search_category_case_price extends HttpServlet {
                     request.setAttribute("search_method",search_method);
                     
                     //ログを記録
-                    Log.getInstance().logtext("search_categoryへ遷移しました。");
+                    Log.getInstance().logtext("search_priceへ遷移しました。");
             
-                    request.getRequestDispatcher("/search_category.jsp").forward(request, response);
+                    request.getRequestDispatcher("/search_price.jsp").forward(request, response);
             }
             
         }catch(Exception e){

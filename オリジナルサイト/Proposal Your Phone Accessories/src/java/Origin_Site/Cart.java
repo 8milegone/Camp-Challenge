@@ -92,9 +92,6 @@ public class Cart extends HttpServlet {
             }else{           
                 int userid = Integer.parseInt(hs.getAttribute("userID").toString());
                 cart = (ArrayList<CartData>)hs.getAttribute("cart");
-                
-                //ログイン時はDB操作をする
-                CartDataDAO cda = CartDataDAO.getInstance();     
             
                 //cartのページからdeleteが送られてきたらその商品をカートから消去
                 if(request.getParameter("delete") != null){
@@ -102,7 +99,6 @@ public class Cart extends HttpServlet {
                     for(CartData cd :cart){
                         if(cd.getItemcode().equals(itemcode)){
                             cart.remove(cart.indexOf(cd));
-                            cda.delete(userid, new CartDataDTO(cd));
                             break;
                         }
                     }                
@@ -116,11 +112,11 @@ public class Cart extends HttpServlet {
                         if(cd.getItemcode().equals(itemcode)){
                             if(qty <= 0){                            
                                 cart.remove(cart.indexOf(cd));
-                                cda.delete(userid, new CartDataDTO(cd));
+//                                cda.delete(userid, new CartDataDTO(cd));
                             }else{                            
                                 cd.setQuantity(qty);
                                 cart.set(cart.indexOf(cd),cd);
-                                cda.update(userid, new CartDataDTO(cd));
+//                                cda.update(userid, new CartDataDTO(cd));
                             }
                             break;
                         }
@@ -130,7 +126,7 @@ public class Cart extends HttpServlet {
                 //カートを空にするから遷移したとき、カートをすべて消去
                 else if(request.getParameter("alldelete") != null){                
                     cart.clear();
-                    cda.deleteAll(userid);
+//                    cda.deleteAll(userid);
                 }            
                         
                 //カートの変更が完了した後で合計を計算

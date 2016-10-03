@@ -7,7 +7,7 @@ package DB_Manage;
 
 /**
  *
- * @author 8mile_000
+ * @author 長島 奨
  */
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -22,13 +22,13 @@ public class BuyData {
     private String itemcode;
     private int buyID;
     private int userID;
-    private int type;
+    private int dispatch;
     private Timestamp buydate;
     
     //BuyDataDTO経由でのみ使用できる
     public BuyData(){
         this.itemcode = "";
-        this.type = 0;
+        this.dispatch = 0;
         //タイムスタンプ型を読みやすい形に
         this.buydate = null;
     }
@@ -97,17 +97,17 @@ public class BuyData {
     }
 
     /**
-     * @return the type
+     * @return the dispatch
      */
-    public int getType() {
-        return type;
+    public int getDispatch() {
+        return dispatch;
     }
 
     /**
-     * @param type the type to set
+     * @param dispatch the type to set
      */
-    public void setType(int type) {
-        this.type = type;
+    public void setDispatch(int dispatch) {
+        this.dispatch = dispatch;
     }
 
     /**
@@ -131,7 +131,7 @@ public class BuyData {
             bd.setBuyID(bddList.get(i).getBuyID());
             bd.setUserID(bddList.get(i).getUserID());
             bd.setItemcode(bddList.get(i).getItemcode());
-            bd.setType(bddList.get(i).getType());
+            bd.setDispatch(bddList.get(i).getDispatch());
             bd.setBuydate(bddList.get(i).getBuydate());
             
             BDList.add(bd);

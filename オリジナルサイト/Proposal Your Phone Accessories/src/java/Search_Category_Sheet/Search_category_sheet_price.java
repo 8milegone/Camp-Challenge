@@ -93,9 +93,9 @@ public class Search_category_sheet_price extends HttpServlet {
                     request.setAttribute("toprice", toprice+"円");
                     
                     //ログを記録
-                    Log.getInstance().logtext("search_categoryへ遷移しました。");
+                    Log.getInstance().logtext("search_priceへ遷移しました。");
             
-                    request.getRequestDispatcher("/search_category.jsp").forward(request, response);
+                    request.getRequestDispatcher("/search_price.jsp").forward(request, response);
             }else{
                 String query = "";
                 String category = "38333";

@@ -81,14 +81,14 @@ public class Add extends HttpServlet {
                             cart.remove(acd);               //アイテム情報が重複しないように
                             cd.setQuantity(qty);            //アイテムの個数を設定する
             /**/                
-                            CartDataDAO.getInstance().delete(userID, new CartDataDTO(cd));
+//                            CartDataDAO.getInstance().delete(userID, new CartDataDTO(cd));
                             break;
                         }                    
                     }                
                 }
             //新しい商品のとき、カートに追加しDBに新しく挿入する
                                 cart.add(cd);
-                                CartDataDAO.getInstance().insert(userID, new CartDataDTO(cd));
+//                                CartDataDAO.getInstance().insert(userID, new CartDataDTO(cd));
                                 hs.setAttribute("cart", cart);
                             }
             //ログを記録

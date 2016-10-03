@@ -5,9 +5,10 @@
  */
 package Origin_Site;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 /**
  *画面系の処理や表示を簡略化するためのヘルパークラス。
- * @author yoshikawatoshio
+ * @author 長島 奨
  */
 public class JumsHelper {
     
@@ -86,5 +87,137 @@ public class JumsHelper {
                 return "その他";
         }
         return "";
+    }
+    /*検索画面の下部のページリンクを取得【キーワード検索】*/
+    public static final String pages_user(HttpServletRequest request){
+        String query = request.getAttribute("query").toString();
+        int page = Integer.parseInt(request.getAttribute("page").toString());
+        int result = Integer.parseInt(request.getAttribute("totalresults").toString());
+        String first = "<a href=\"Search_user?query="+ query +"&page=" + 1 +"\">最初</a>";
+        String back = "<a href=\"Search_user?query="+ query +"&page=" + (page - 1) +"\">戻る</a>";
+        String next = "<a href=\"Search_user?query="+ query +"&page=" + (page + 1) +"\">次へ</a>";
+        String end = "<a href=\"Search_user?query="+ query +"&page=" + 50 +"\">最後</a>";
+        
+        String pages = "";
+        //現在のページから表示するページリンク数
+        int left  = 3;
+        int right = 3;
+        //最大ページ数
+        int max = 50;
+        if(result / 20 <= max){
+            max = (int) Math.ceil(result / 20.0) ;
+        }
+        
+        //表示されるリンク数が合計7になるように調整
+        if(page - left < 1){
+            right -= page - left;
+        }
+        if(max - page < right){
+            left += right - (max - page) ;
+        }
+        
+        for(int i = -left ; i <= right; i++){            
+            //現在のページにはリンクを貼らない
+            if(page + i <= 0){ continue;}
+            if(page + i > max){ break;}
+            if( i == 0 ){
+                pages += "<a disabled style=\"cursor:default\">" + page +"</a>";
+                continue;
+            }
+            pages += "<a href=\"Search_user?query=" + query + "&page=" + (page + i) +"\">" + (page + i) +"</a>";
+        }
+        
+        return "<div id=\"page\" align=\"center\">" + first + back + pages + next + end + "</div>";
+        
+    }
+
+/*検索画面の下部のページリンクを取得【カテゴリー検索】*/
+    public static final String pages_category(HttpServletRequest request){
+        String query = request.getAttribute("query").toString();
+        int page = Integer.parseInt(request.getAttribute("page").toString());
+        int result = Integer.parseInt(request.getAttribute("totalresults").toString());
+        String search_method = request.getAttribute("search_method").toString();
+        String first = "<a href=\""+ search_method +"?query="+ query +"&page=" + 1 +"\">最初</a>";
+        String back = "<a href=\""+ search_method +"?query="+ query +"&page=" + (page - 1) +"\">戻る</a>";
+        String next = "<a href=\""+ search_method +"?query="+ query +"&page=" + (page + 1) +"\">次へ</a>";
+        String end = "<a href=\""+ search_method +"?query="+ query +"&page=" + 50 +"\">最後</a>";
+        
+        String pages = "";
+        //現在のページから表示するページリンク数
+        int left  = 3;
+        int right = 3;
+        //最大ページ数
+        int max = 50;
+        if(result / 20 <= max){
+            max = (int) Math.ceil(result / 20.0) ;
+        }
+        
+        //表示されるリンク数が合計7になるように調整
+        if(page - left < 1){
+            right -= page - left;
+        }
+        if(max - page < right){
+            left += right - (max - page) ;
+        }
+        
+        for(int i = -left ; i <= right; i++){            
+            //現在のページにはリンクを貼らない
+            if(page + i <= 0){ continue;}
+            if(page + i > max){ break;}
+            if( i == 0 ){
+                pages += "<a disabled style=\"cursor:default\">" + page +"</a>";
+                continue;
+            }
+            pages += "<a href=\""+ search_method +"?query=" + query + "&page=" + (page + i) +"\">" + (page + i) +"</a>";
+        }
+        
+        return "<div id=\"page\" align=\"center\">" + first + back + pages + next + end + "</div>";
+        
+    }
+/*検索画面の下部のページリンクを取得【価格検索】*/
+    public static final String pages_price(HttpServletRequest request){
+        String query = request.getAttribute("query").toString();
+        int page = Integer.parseInt(request.getAttribute("page").toString());
+        int result = Integer.parseInt(request.getAttribute("totalresults").toString());
+        String search_method = request.getAttribute("search_method").toString();
+        String fromprice = request.getAttribute("fromprice").toString();
+        String toprice = request.getAttribute("toprice").toString();
+        
+        String first = "<a href=\""+ search_method +"?query="+ query +"&fromprice="+ fromprice +"&toprice="+ toprice +"&page=" + 1 +"\">最初</a>";
+        String back = "<a href=\""+ search_method +"?query="+ query +"&fromprice="+ fromprice +"&toprice="+ toprice +"&page=" + (page - 1) +"\">戻る</a>";
+        String next = "<a href=\""+ search_method +"?query="+ query +"&fromprice="+ fromprice +"&toprice="+ toprice +"&page=" + (page + 1) +"\">次へ</a>";
+        String end = "<a href=\""+ search_method +"?query="+ query +"&fromprice="+ fromprice +"&toprice="+ toprice +"&page=" + 50 +"\">最後</a>";
+        
+        String pages = "";
+        //現在のページから表示するページリンク数
+        int left  = 3;
+        int right = 3;
+        //最大ページ数
+        int max = 50;
+        if(result / 20 <= max){
+            max = (int) Math.ceil(result / 20.0) ;
+        }
+        
+        //表示されるリンク数が合計7になるように調整
+        if(page - left < 1){
+            right -= page - left;
+        }
+        if(max - page < right){
+            left += right - (max - page) ;
+        }
+        
+        for(int i = -left ; i <= right; i++){            
+            //現在のページにはリンクを貼らない
+            if(page + i <= 0){ continue;}
+            if(page + i > max){ break;}
+            if( i == 0 ){
+                pages += "<a disabled style=\"cursor:default\">" + page +"</a>";
+                continue;
+            }
+            pages += "<a href=\""+ search_method +"?query=" + query + "&fromprice="+ fromprice +"&toprice="+ toprice +"&page=" + (page + i) +"\">" + (page + i) +"</a>";
+        }
+        
+        return "<div id=\"page\" align=\"center\">" + first + back + pages + next + end + "</div>";
+        
     }
 }

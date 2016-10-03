@@ -83,6 +83,9 @@
             </tr>
             <% } %>
         </table>
+        <br>
+        <%=jh.pages_category(request)%>
+        <br>
         <%=jh.home()%>
     </body>
 </html>
